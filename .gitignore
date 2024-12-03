@@ -1,0 +1,37 @@
+# Node.js dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Logs
+*.log
+logs/
+client/logs/
+server/logs/
+
+# Environment variable files
+.env
+
+# npm package lock files (optional, if you don't want to track them)
+package-lock.json
+client/package-lock.json
+server/package-lock.json
+
+# OS files (e.g., macOS, Windows)
+.DS_Store
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+
+# Build output
+client/build/
+server/build/
+dist/
+
+# Test coverage
+coverage/
+
+# Temporary files
+.tmp/
