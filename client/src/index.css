@@ -1,7 +1,36 @@
-body{
-    background-color: aliceblue;
+html{
+    scroll-behavior: smooth;
+    background-color: azure;
 }
-
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: gilmama;
+    /* scrollbar-gutter: stable; */
+}
+.talk{
+    width: 100%;
+    height: 40px;
+    background-color: #0d2235;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+.talkin{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    font-size: 1rem;
+    
+}
+.talkin i{
+    font-size: 1.2rem;
+    margin-right: 10px;
+}
 .navbar {
     width: 100%;
     height: 60px;
@@ -17,14 +46,13 @@ body{
     justify-content: space-between;
 }
 
-/* .logo {
+.logo {
     width: 150px;
-    height: 70%;
-    background-image: url(/img/nlogo.png);
+    height: auto;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-} */
+}
 
 .links {
     width: 80%;
