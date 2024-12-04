@@ -9,6 +9,8 @@ html{
     font-family: gilmama;
     /* scrollbar-gutter: stable; */
 }
+
+/*TopLine*/
 .talk{
     width: 100%;
     height: 40px;
