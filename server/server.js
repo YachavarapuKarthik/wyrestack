@@ -1,60 +1,68 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
-const cors = require('cors');
+const bodyParser = require('body-parser');
+const UserModel = require('./models/User'); // Import the User model
 
 const app = express();
+const PORT = 4000;
+
+// Middleware to parse JSON bodies
 app.use(bodyParser.json());
-app.use(cors());
 
-// MongoDB connection
-mongoose.connect('mongodb://localhost:27017/wyst/logins', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// Connect to MongoDB
+mongoose.connect('mongodb://localhost:27017/wyst', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => console.log('Connected to MongoDB')).catch(err => console.log(err));
 
-// User schema
-const userSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-});
-
-const User = mongoose.model('User', userSchema);
-
-// Signup endpoint
+// Signup Route
 app.post('/signup', async (req, res) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Email and password are required' });
+  }
+
+  // Check if user already exists
+  const userExists = await UserModel.findOne({ email });
+  if (userExists) {
+    return res.status(400).json({ message: 'User already exists' });
+  }
+
+  // Create new user with plain text password
+  const newUser = new UserModel({
+    email,
+    password,
+  });
+
   try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = new User({ email, password: hashedPassword });
-    await user.save();
-    res.status(201).send('User created');
-    console.log("user created")
+    await newUser.save();
+    res.status(201).json({ message: 'User created successfully' });
   } catch (error) {
-    res.status(400).send('Error creating user');
+    console.error(error); // Log the error for debugging
+    res.status(500).json({ message: 'Error creating user', error: error.message });
   }
 });
 
-// Login endpoint
+// Login Route
 app.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+    const { email, password } = req.body;
 
-  try {
-    const user = await User.findOne({ email });
-    if (!user) return res.status(404).send('User not found');
+    // Find user by email
+    const user = await UserModel.findOne({ email });
+    if (!user) {
+        return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
-    const isPasswordCorrect = await bcrypt.compare(password, user.password);
-    if (!isPasswordCorrect) return res.status(401).send('Invalid credentials');
+    // Compare the provided password directly with the stored password
+    if (user.password !== password) {
+        return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
-    res.status(200).send('Login successful');
-  } catch (error) {
-    res.status(500).send('Error logging in');
-  }
+    res.status(200).json({ message: 'Login successful' });
 });
 
-// Start server
-app.listen(4000, () => {
-  console.log('Server running on port 4000');
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 });

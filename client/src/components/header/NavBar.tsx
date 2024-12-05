@@ -1,13 +1,23 @@
-import  { useState } from "react";
+import { useState } from "react";
 import logo from "../../assets/logo.png";
 import LoginPopup from "../LoginPopup.tsx";
+import SignupPopup from "../SignupPopup.tsx";
 
 function NavBar() {
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isLoginPopupVisible, setLoginPopupVisible] = useState(false);
+  const [isSignupPopupVisible, setSignupPopupVisible] = useState(false);
 
-  const toggleModal = () => {
-    setIsModalOpen((prev) => !prev);
+  const showLoginPopup = () => {
+    setLoginPopupVisible(true);
+    setSignupPopupVisible(false); // Close signup popup if open
   };
+  const hideLoginPopup = () => setLoginPopupVisible(false);
+
+  const showSignupPopup = () => {
+    setSignupPopupVisible(true);
+    setLoginPopupVisible(false); // Close login popup if open
+  };
+  const hideSignupPopup = () => setSignupPopupVisible(false);
 
   return (
     <>
@@ -21,18 +31,28 @@ function NavBar() {
             <a href="#">Courses</a>
             <a href="#">Contact</a>
             {/* Button to toggle the popup */}
-            <button onClick={toggleModal} className="btn1">
-              Let's Get Started
+            <button onClick={showLoginPopup} className="btn1">
+              Login
+            </button>
+
+            <button onClick={showSignupPopup} className="btn1">
+              Signup
             </button>
           </div>
         </div>
       </div>
 
-      {/* LoginPopup Component */}
+      {/* Login Popup */}
+      {isLoginPopupVisible && (
+        <LoginPopup closePopup={hideLoginPopup} openSignup={showSignupPopup} />
+      )}
 
-      <LoginPopup isOpen={isModalOpen} togglePopup={toggleModal} />
+      {/* Signup Popup */}
+      {isSignupPopupVisible && (
+        <SignupPopup closePopup={hideSignupPopup} openLogin={showLoginPopup} />
+      )}
     </>
   );
-};
+}
 
 export default NavBar;
