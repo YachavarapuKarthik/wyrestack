@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors'); // Import cors
 const UserModel = require('./models/User'); // Import the User model
 
 const app = express();
@@ -8,6 +9,9 @@ const PORT = 4000;
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
+
+// Enable CORS for all origins
+app.use(cors());
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/wyst', {
@@ -17,31 +21,31 @@ mongoose.connect('mongodb://localhost:27017/wyst', {
 
 // Signup Route
 app.post('/signup', async (req, res) => {
-  const { email, password } = req.body;
+    const { email, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).json({ message: 'Email and password are required' });
-  }
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Email and password are required' });
+    }
 
-  // Check if user already exists
-  const userExists = await UserModel.findOne({ email });
-  if (userExists) {
-    return res.status(400).json({ message: 'User already exists' });
-  }
+    // Check if user already exists
+    const userExists = await UserModel.findOne({ email });
+    if (userExists) {
+        return res.status(400).json({ message: 'User already exists' });
+    }
 
-  // Create new user with plain text password
-  const newUser = new UserModel({
-    email,
-    password,
-  });
+    // Create new user with plain text password
+    const newUser = new UserModel({
+        email,
+        password,
+    });
 
-  try {
-    await newUser.save();
-    res.status(201).json({ message: 'User created successfully' });
-  } catch (error) {
-    console.error(error); // Log the error for debugging
-    res.status(500).json({ message: 'Error creating user', error: error.message });
-  }
+    try {
+        await newUser.save();
+        res.status(201).json({ message: 'User created successfully' });
+    } catch (error) {
+        console.error(error); // Log the error for debugging
+        res.status(500).json({ message: 'Error creating user', error: error.message });
+    }
 });
 
 // Login Route

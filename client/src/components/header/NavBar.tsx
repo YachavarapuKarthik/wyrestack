@@ -1,4 +1,4 @@
-import { useState } from "react";
+import  { useState } from "react";
 import logo from "../../assets/logo.png";
 import LoginPopup from "../LoginPopup.tsx";
 import SignupPopup from "../SignupPopup.tsx";
@@ -7,16 +7,10 @@ function NavBar() {
   const [isLoginPopupVisible, setLoginPopupVisible] = useState(false);
   const [isSignupPopupVisible, setSignupPopupVisible] = useState(false);
 
-  const showLoginPopup = () => {
-    setLoginPopupVisible(true);
-    setSignupPopupVisible(false); // Close signup popup if open
-  };
+  const showLoginPopup = () => setLoginPopupVisible(true);
   const hideLoginPopup = () => setLoginPopupVisible(false);
 
-  const showSignupPopup = () => {
-    setSignupPopupVisible(true);
-    setLoginPopupVisible(false); // Close login popup if open
-  };
+  const showSignupPopup = () => setSignupPopupVisible(true);
   const hideSignupPopup = () => setSignupPopupVisible(false);
 
   return (
@@ -42,17 +36,19 @@ function NavBar() {
         </div>
       </div>
 
-      {/* Login Popup */}
+      {/* LoginPopup Component */}
+              {/* Login Popup */}
       {isLoginPopupVisible && (
-        <LoginPopup closePopup={hideLoginPopup} openSignup={showSignupPopup} />
+        <LoginPopup closePopup={hideLoginPopup} openSignup={showSignupPopup}/>
       )}
 
       {/* Signup Popup */}
       {isSignupPopupVisible && (
-        <SignupPopup closePopup={hideSignupPopup} openLogin={showLoginPopup} />
+        <SignupPopup closePopup={hideSignupPopup} openLogin={showLoginPopup}/>
       )}
+
     </>
   );
-}
+};
 
 export default NavBar;

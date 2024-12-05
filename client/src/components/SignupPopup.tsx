@@ -25,7 +25,7 @@ const SignupPopup: React.FC<Props> = ({ closePopup, openLogin }) => {
         alert(response.data.message); // Success message
         closePopup(); // Close the popup after successful signup
       } catch (error: any) {
-        alert('db problem')
+        alert('db pronlem')
         setErrorMessage(error.response?.data?.message || 'An error occurred');
       }
     };

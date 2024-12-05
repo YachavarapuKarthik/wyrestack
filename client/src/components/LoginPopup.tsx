@@ -3,7 +3,7 @@ import axios from 'axios';
 
 interface Props {
   closePopup: () => void;
-  openSignup: () => void; // New prop to open signup popup
+  openSignup : () => void;
 }
 
 const LoginPopup: React.FC<Props> = ({ closePopup, openSignup }) => {
@@ -16,9 +16,11 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup }) => {
 
     try {
       const response = await axios.post('http://localhost:4000/login', { email, password });
-      alert(response.data); // Show success message
+      alert("Logged in")
+      //alert(response.data); // Show success message
       closePopup(); // Close the popup after successful login
     } catch (error: any) {
+      alert('db problem')
       setErrorMessage(error.response?.data?.message || 'An error occurred');
     }
   };
@@ -50,7 +52,7 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup }) => {
           </div>
           <button type="submit" className="submit-btn">Login</button>
           <div className="toggle-form">
-            <span onClick={() => { closePopup(); openSignup(); }}>Don't have an account? Sign up</span>
+            <span onClick={() => { closePopup(); openSignup(); }} >Don't have an account? Sign up</span>
           </div>
         </form>
       </div>
