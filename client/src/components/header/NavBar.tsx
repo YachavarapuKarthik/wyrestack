@@ -1,6 +1,6 @@
 import  { useState } from "react";
 import logo from "../../assets/logo.png";
-import LoginPopup from "../LoginPopUp";
+import LoginPopup from "../LoginPopup.tsx";
 
 function NavBar() {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
