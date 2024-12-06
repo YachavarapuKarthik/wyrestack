@@ -38,7 +38,7 @@ const AdminPage: React.FC = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get("/api/courses");
+        const response = await axios.get("http://localhost:5000/courses");
         setCourses(response.data);
       } catch (error) {
         console.error("Error fetching courses:", error);
@@ -59,7 +59,7 @@ const AdminPage: React.FC = () => {
 
   const addCourse = async () => {
     try {
-      await axios.post("/api/courses", course);
+      await axios.post("http://localhost:5000/courses/add", course);
       alert("Course added successfully!");
       setShowCourseForm(false);
     } catch (error) {
@@ -70,13 +70,14 @@ const AdminPage: React.FC = () => {
   const addReview = async () => {
     try {
       // Create the review without _id
-      await axios.post("/api/reviews", review);
+      await axios.post("http://localhost:5000/reviews/add", review);
       alert("Review added successfully!");
       setShowReviewForm(false);
 
       // Re-fetch courses and reviews after adding a review
-      const response = await axios.get("/api/courses");
+      const response = await axios.get("http://localhost:5000/courses");
       setCourses(response.data);
+    alert("Review added ")
     } catch (error) {
       console.error("Error adding review:", error);
     }

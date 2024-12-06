@@ -7,16 +7,17 @@ const router = express.Router();
 // Add a New Course
 router.post('/add', async (req, res) => {
   try {
-    const { title, mode, startDate, duration, trainer, price, banner } = req.body;
+    const { logo, banner, title, mode, start_date, duration, trainer, price } = req.body;
 
     const newCourse = new CourseModel({
+      logo,
+      banner,
       title,
       mode,
-      startDate,
+      start_date,
       duration,
       trainer,
       price,
-      banner,
     });
 
     await newCourse.save();
@@ -30,7 +31,7 @@ router.post('/add', async (req, res) => {
 // Get All Courses with Reviews
 router.get('/', async (req, res) => {
   try {
-    const courses = await CourseModel.find().populate('reviews');
+    const courses = await CourseModel.find()//.populate('reviews');
     res.status(200).json(courses);
   } catch (error) {
     console.error('Error fetching courses:', error);

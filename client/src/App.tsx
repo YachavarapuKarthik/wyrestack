@@ -3,6 +3,7 @@ import Footer from "./components/footer/Footer.tsx"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import ProfileDashboard from "./components/ProfileDashboard.tsx";
 import CoursePage from "./components/CoursePage.tsx";
+import AdminPage from "./components/AdminPage.tsx";
 
 function App(){
   
@@ -14,7 +15,8 @@ function App(){
       </div>
       <Footer />
     </div> */}
-    <CoursePage/>
+    {/* <CoursePage/> */}
+    <AdminPage/>
     </>
   );
 }

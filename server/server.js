@@ -9,7 +9,7 @@ const courseRoutes = require('./routes/courseRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 
 const app = express();
-const PORT = 4000;
+const PORT = 5000;
 
 // Middleware
 app.use(bodyParser.json());

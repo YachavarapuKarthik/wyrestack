@@ -18,7 +18,7 @@ router.post('/add', async (req, res) => {
 
     const savedReview = await newReview.save();
 
-    // Update Course with the new Review
+    // Update the course to include the new review
     await CourseModel.findByIdAndUpdate(courseId, {
       $push: { reviews: savedReview._id },
     });
@@ -35,11 +35,24 @@ router.get('/:courseId', async (req, res) => {
   try {
     const { courseId } = req.params;
 
-    const reviews = await ReviewModel.find({ course: courseId });
+    // Fetch reviews for a specific course
+    const reviews = await ReviewModel.find({ course: courseId }).populate('course', 'title');
+
     res.status(200).json(reviews);
   } catch (error) {
     console.error('Error fetching reviews:', error);
     res.status(500).json({ message: 'Error fetching reviews', error: error.message });
+  }
+});
+
+// Get All Courses with Reviews
+router.get('/', async (req, res) => {
+  try {
+    const courses = await CourseModel.find().populate('reviews');
+    res.status(200).json(courses);
+  } catch (error) {
+    console.error('Error fetching courses:', error);
+    res.status(500).json({ message: 'Error fetching courses', error: error.message });
   }
 });
 
