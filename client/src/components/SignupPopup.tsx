@@ -22,7 +22,7 @@ const SignupPopup: React.FC<Props> = ({ closePopup, openLogin, onAuthSuccess }) 
     }
 
     try {
-      const response = await axios.post('http://localhost:4000/signup', { email, password });
+      const response = await axios.post('http://localhost:4000/auth/signup', { email, password });
       alert(response.data.message); // Show success message
       onAuthSuccess(email); // Notify NavBar
       closePopup(); // Close popup
