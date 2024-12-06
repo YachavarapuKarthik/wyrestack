@@ -3,10 +3,11 @@ import axios from 'axios';
 
 interface Props {
   closePopup: () => void;
-  openSignup : () => void;
+  openSignup: () => void;
+  onAuthSuccess: (email: string) => void; // Notify NavBar of successful login
 }
 
-const LoginPopup: React.FC<Props> = ({ closePopup, openSignup }) => {
+const LoginPopup: React.FC<Props> = ({ closePopup, openSignup, onAuthSuccess }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
@@ -16,11 +17,10 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup }) => {
 
     try {
       const response = await axios.post('http://localhost:4000/login', { email, password });
-      alert("Logged in")
-      //alert(response.data); // Show success message
-      closePopup(); // Close the popup after successful login
+      alert('Logged in successfully'); // Show success message
+      onAuthSuccess(email); // Notify NavBar
+      closePopup(); // Close popup
     } catch (error: any) {
-      alert('db problem')
       setErrorMessage(error.response?.data?.message || 'An error occurred');
     }
   };
@@ -52,7 +52,7 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup }) => {
           </div>
           <button type="submit" className="submit-btn">Login</button>
           <div className="toggle-form">
-            <span onClick={() => { closePopup(); openSignup(); }} >Don't have an account? Sign up</span>
+            <span onClick={() => { closePopup(); openSignup(); }}>Don't have an account? Sign up</span>
           </div>
         </form>
       </div>
