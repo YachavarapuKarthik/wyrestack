@@ -9,14 +9,18 @@ function App(){
   
   return (
     <>
-      {/* <div className="app-container">
-      <Header />
+    <Header />
+      <div className="app-container">
+      
       <div className="content">
+      <AdminPage/>
+    <CoursePage/>
       </div>
-      <Footer />
-    </div> */}
+     
+    </div> 
+    <Footer />
     {/* <CoursePage/> */}
-    <AdminPage/>
+    
     </>
   );
 }

@@ -12,7 +12,7 @@ interface Review {
 
 const AdminPage: React.FC = () => {
   const [showCourseForm, setShowCourseForm] = useState(false);
-  const [showReviewForm, setShowReviewForm] = useState(false);
+  // const [showReviewForm, setShowReviewForm] = useState(false);
 
   const [course, setCourse] = useState({
     logo: "",
@@ -25,12 +25,12 @@ const AdminPage: React.FC = () => {
     price: 0,
   });
 
-  const [review, setReview] = useState<Review>({
-    name: "",
-    course_id: "",
-    rating: 0,
-    description: "",
-  });
+  // const [review, setReview] = useState<Review>({
+  //   name: "",
+  //   course_id: "",
+  //   rating: 0,
+  //   description: "",
+  // });
 
   const [courses, setCourses] = useState<any[]>([]);
 
@@ -51,10 +51,10 @@ const AdminPage: React.FC = () => {
     setCourse({ ...course, [e.target.name]: e.target.value });
   };
 
-  const handleReviewChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setReview({ ...review, [name]: value });
-  };
+  // const handleReviewChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  //   const { name, value } = e.target;
+  //   setReview({ ...review, [name]: value });
+  // };
   
 
   const addCourse = async () => {
@@ -67,21 +67,21 @@ const AdminPage: React.FC = () => {
     }
   };
 
-  const addReview = async () => {
-    try {
-      // Create the review without _id
-      await axios.post("http://localhost:5000/reviews/add", review);
-      alert("Review added successfully!");
-      setShowReviewForm(false);
+  // const addReview = async () => {
+  //   try {
+  //     // Create the review without _id
+  //     await axios.post("http://localhost:5000/reviews/add", review);
+  //     alert("Review added successfully!");
+  //     setShowReviewForm(false);
 
-      // Re-fetch courses and reviews after adding a review
-      const response = await axios.get("http://localhost:5000/courses");
-      setCourses(response.data);
-    alert("Review added ")
-    } catch (error) {
-      console.error("Error adding review:", error);
-    }
-  };
+  //     // Re-fetch courses and reviews after adding a review
+  //     const response = await axios.get("http://localhost:5000/courses");
+  //     setCourses(response.data);
+  //   alert("Review added ")
+  //   } catch (error) {
+  //     console.error("Error adding review:", error);
+  //   }
+  // };
 
   return (
     <div className="admin-page">
@@ -131,13 +131,13 @@ const AdminPage: React.FC = () => {
       </div>
 
       {/* Manage Reviews Section */}
-      <div>
+      {/* <div>
         <h2>Manage Reviews</h2>
         <button onClick={() => setShowReviewForm(!showReviewForm)}>
           {showReviewForm ? "Close Add Review Form" : "Add New Review"}
-        </button>
+        </button> */}
 
-        {showReviewForm && (
+        {/* {showReviewForm && (
           <div className="review-form">
             <input type="text" name="name" placeholder="Reviewer Name" onChange={handleReviewChange} />
             <select name="course_id" onChange={handleReviewChange}>
@@ -152,10 +152,11 @@ const AdminPage: React.FC = () => {
             <textarea name="description" placeholder="Review Description" onChange={handleReviewChange}></textarea>
             <button onClick={addReview}>Add Review</button>
           </div>
-        )}
-      </div>
+        )} 
+      </div> */}
     </div>
   );
 };
 
 export default AdminPage;
+

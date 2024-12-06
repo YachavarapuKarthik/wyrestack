@@ -6,7 +6,7 @@ const cors = require('cors');
 // Route Imports
 const authRoutes = require('./routes/authRoutes');
 const courseRoutes = require('./routes/courseRoutes');
-const reviewRoutes = require('./routes/reviewRoutes');
+// const reviewRoutes = require('./routes/reviewRoutes');
 
 const app = express();
 const PORT = 5000;
@@ -27,7 +27,7 @@ mongoose
 // Routes
 app.use('/auth', authRoutes);
 app.use('/courses', courseRoutes);
-app.use('/reviews', reviewRoutes);
+// app.use('/reviews', reviewRoutes);
 
 // Start the server
 app.listen(PORT, () => {

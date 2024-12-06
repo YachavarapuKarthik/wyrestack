@@ -28,7 +28,7 @@ router.post('/add', async (req, res) => {
   }
 });
 
-// Get All Courses with Reviews
+// Get All Courses 
 router.get('/', async (req, res) => {
   try {
     const courses = await CourseModel.find()//.populate('reviews');
