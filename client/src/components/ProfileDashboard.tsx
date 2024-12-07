@@ -1,11 +1,16 @@
 import React, { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import axios from 'axios';
+import Cookies from 'js-cookie'; // For reading cookies
 
 const ProfileDashboard: React.FC = () => {
-  const userId = localStorage.getItem('userId'); // Assumes the user ID is stored in localStorage
+  const userEmail = Cookies.get('userEmail'); // Get email from cookies
+  const userId = Cookies.get('userId'); // Assuming the user ID is stored in cookies
   const [user, setUser] = useState({
     email: '',
     password: '',
+    name: '',
+    dob: '',
+    phone: '',
   });
   const [isEditing, setIsEditing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -45,14 +50,16 @@ const ProfileDashboard: React.FC = () => {
     }
 
     try {
-      const updatedData = {
-        email: user.email,
+      const updatedData: any = {
+        name: user.name,
+        dob: user.dob,
+        phone: user.phone,
       };
 
-      // // Include password only if the user has entered it
-      // if (user.password) {
-      //   updatedData['password'] = user.password;
-      // }
+      // Only include password if the user has entered it
+      if (user.password) {
+        updatedData.password = user.password;
+      }
 
       const response = await axios.put(`http://localhost:5000/auth/profile/${userId}`, updatedData);
       alert(response.data.message);
@@ -71,30 +78,55 @@ const ProfileDashboard: React.FC = () => {
 
       {!isEditing ? (
         <div>
-          <p><strong>Email:</strong> {user.email}</p>
+          <p><strong>Email:</strong> {userEmail}</p> {/* Email is not editable */}
+          <p><strong>Name:</strong> {user.name}</p>
+          <p><strong>Date of Birth:</strong> {user.dob}</p>
+          <p><strong>Phone:</strong> {user.phone}</p>
           <button onClick={() => setIsEditing(true)}>Edit Profile</button>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Email:</label>
-            <input 
-              type="email" 
-              name="email" 
-              value={user.email} 
-              onChange={handleChange} 
-              required 
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={user.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Date of Birth:</label>
+            <input
+              type="date"
+              name="dob"
+              value={user.dob}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label>Phone:</label>
+            <input
+              type="text"
+              name="phone"
+              value={user.phone}
+              onChange={handleChange}
+              required
             />
           </div>
 
           <div className="form-group">
             <label>New Password (optional):</label>
-            <input 
-              type="password" 
-              name="password" 
-              value={user.password} 
-              onChange={handleChange} 
-              placeholder="Enter new password" 
+            <input
+              type="password"
+              name="password"
+              value={user.password}
+              onChange={handleChange}
+              placeholder="Enter new password"
             />
           </div>
 

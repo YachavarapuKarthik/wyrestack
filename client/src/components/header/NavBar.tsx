@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "../../assets/logo.png";
 import LoginPopup from "../LoginPopup.tsx";
 import SignupPopup from "../SignupPopup.tsx";
 import userAvatar from "../../assets/user-avatar.png"; 
+import Cookies from "js-cookie"; // Import js-cookie
 
 function NavBar() {
   const [isLoginPopupVisible, setLoginPopupVisible] = useState(false);
   const [isSignupPopupVisible, setSignupPopupVisible] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Tracks login state
+
+  useEffect(() => {
+    const userToken = Cookies.get("userToken"); // Check if the user token is available in cookies
+    if (userToken) {
+      setIsAuthenticated(true); // User is authenticated
+    }
+  }, []);
 
   const showLoginPopup = () => setLoginPopupVisible(true);
   const hideLoginPopup = () => setLoginPopupVisible(false);
@@ -15,14 +23,18 @@ function NavBar() {
   const showSignupPopup = () => setSignupPopupVisible(true);
   const hideSignupPopup = () => setSignupPopupVisible(false);
 
-  const handleAuthSuccess = () => {
+  const handleAuthSuccess = (email: string, token: string) => {
     setIsAuthenticated(true); // Mark user as authenticated
+    Cookies.set("userToken", token, { expires: 7 }); // Save token in cookies for 7 days
+    Cookies.set("userEmail", email, { expires: 7 }); // Optionally save email
     hideLoginPopup();
     hideSignupPopup();
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false); // Mark user as logged out
+    Cookies.remove("userToken"); // Remove token from cookies
+    Cookies.remove("userEmail"); // Optionally remove email
   };
 
   return (

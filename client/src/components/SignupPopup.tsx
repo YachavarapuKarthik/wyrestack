@@ -1,10 +1,11 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
+// import Cookies from 'js-cookie'; // Import js-cookie
 
 interface Props {
   closePopup: () => void;
   openLogin: () => void;
-  onAuthSuccess: (email: string) => void; // Notify NavBar of successful signup
+  onAuthSuccess: (email: string, token: string) => void; // Notify NavBar of successful signup
 }
 
 const SignupPopup: React.FC<Props> = ({ closePopup, openLogin, onAuthSuccess }) => {
@@ -23,8 +24,9 @@ const SignupPopup: React.FC<Props> = ({ closePopup, openLogin, onAuthSuccess }) 
 
     try {
       const response = await axios.post('http://localhost:5000/auth/signup', { email, password });
+      const { token } = response.data; // Assume backend returns a token
       alert(response.data.message); // Show success message
-      onAuthSuccess(email); // Notify NavBar
+      onAuthSuccess(email, token); // Notify NavBar with email and token
       closePopup(); // Close popup
     } catch (error: any) {
       setErrorMessage(error.response?.data?.message || 'An error occurred');
