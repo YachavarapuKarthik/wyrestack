@@ -12,8 +12,7 @@ interface Review {
 
 const AdminPage: React.FC = () => {
   const [showCourseForm, setShowCourseForm] = useState(false);
-  // const [showReviewForm, setShowReviewForm] = useState(false);
-
+  const [editCourseId, setEditCourseId] = useState<string | null>(null);
   const [course, setCourse] = useState({
     logo: "",
     banner: "",
@@ -24,13 +23,6 @@ const AdminPage: React.FC = () => {
     trainer: "",
     price: 0,
   });
-
-  // const [review, setReview] = useState<Review>({
-  //   name: "",
-  //   course_id: "",
-  //   rating: 0,
-  //   description: "",
-  // });
 
   const [courses, setCourses] = useState<any[]>([]);
 
@@ -51,37 +43,49 @@ const AdminPage: React.FC = () => {
     setCourse({ ...course, [e.target.name]: e.target.value });
   };
 
-  // const handleReviewChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-  //   const { name, value } = e.target;
-  //   setReview({ ...review, [name]: value });
-  // };
-  
-
-  const addCourse = async () => {
+  const addOrUpdateCourse = async () => {
     try {
-      await axios.post("http://localhost:5000/courses/add", course);
-      alert("Course added successfully!");
+      if (editCourseId) {
+        // Update existing course
+        await axios.put(`http://localhost:5000/courses/edit/${editCourseId}`, course);
+        alert("Course updated successfully!");
+        setEditCourseId(null);
+      } else {
+        // Add new course
+        await axios.post("http://localhost:5000/courses/add", course);
+        alert("Course added successfully!");
+      }
       setShowCourseForm(false);
+      refreshCourses();
     } catch (error) {
-      console.error("Error adding course:", error);
+      console.error("Error saving course:", error);
     }
   };
 
-  // const addReview = async () => {
-  //   try {
-  //     // Create the review without _id
-  //     await axios.post("http://localhost:5000/reviews/add", review);
-  //     alert("Review added successfully!");
-  //     setShowReviewForm(false);
+  const refreshCourses = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/courses");
+      setCourses(response.data);
+    } catch (error) {
+      console.error("Error refreshing courses:", error);
+    }
+  };
 
-  //     // Re-fetch courses and reviews after adding a review
-  //     const response = await axios.get("http://localhost:5000/courses");
-  //     setCourses(response.data);
-  //   alert("Review added ")
-  //   } catch (error) {
-  //     console.error("Error adding review:", error);
-  //   }
-  // };
+  const editCourse = (course: any) => {
+    setCourse(course);
+    setEditCourseId(course._id);
+    setShowCourseForm(true);
+  };
+
+  const deleteCourse = async (id: string) => {
+    try {
+      await axios.delete(`http://localhost:5000/courses/delete/${id}`);
+      alert("Course deleted successfully!");
+      refreshCourses();
+    } catch (error) {
+      console.error("Error deleting course:", error);
+    }
+  };
 
   return (
     <div className="admin-page">
@@ -91,20 +95,20 @@ const AdminPage: React.FC = () => {
       <div>
         <h2>Manage Courses</h2>
         <button onClick={() => setShowCourseForm(!showCourseForm)}>
-          {showCourseForm ? "Close Add Course Form" : "Add New Course"}
+          {showCourseForm ? "Close Form" : "Add New Course"}
         </button>
 
         {showCourseForm && (
           <div className="course-form">
-            <input type="text" name="logo" placeholder="Logo URL" onChange={handleCourseChange} />
-            <input type="text" name="banner" placeholder="Banner URL" onChange={handleCourseChange} />
-            <input type="text" name="title" placeholder="Title" onChange={handleCourseChange} />
-            <input type="text" name="mode" placeholder="Mode" onChange={handleCourseChange} />
-            <input type="date" name="start_date" onChange={handleCourseChange} />
-            <input type="text" name="duration" placeholder="Duration" onChange={handleCourseChange} />
-            <input type="text" name="trainer" placeholder="Trainer" onChange={handleCourseChange} />
-            <input type="number" name="price" placeholder="Price" onChange={handleCourseChange} />
-            <button onClick={addCourse}>Add Course</button>
+            <input type="text" name="logo" placeholder="Logo URL" value={course.logo} onChange={handleCourseChange} />
+            <input type="text" name="banner" placeholder="Banner URL" value={course.banner} onChange={handleCourseChange} />
+            <input type="text" name="title" placeholder="Title" value={course.title} onChange={handleCourseChange} />
+            <input type="text" name="mode" placeholder="Mode" value={course.mode} onChange={handleCourseChange} />
+            <input type="date" name="start_date" value={course.start_date} onChange={handleCourseChange} />
+            <input type="text" name="duration" placeholder="Duration" value={course.duration} onChange={handleCourseChange} />
+            <input type="text" name="trainer" placeholder="Trainer" value={course.trainer} onChange={handleCourseChange} />
+            <input type="number" name="price" placeholder="Price" value={course.price} onChange={handleCourseChange} />
+            <button onClick={addOrUpdateCourse}>{editCourseId ? "Update Course" : "Add Course"}</button>
           </div>
         )}
 
@@ -112,7 +116,7 @@ const AdminPage: React.FC = () => {
         <div>
           <h3>All Courses</h3>
           {courses.map((course) => (
-            <div key={course._id}>
+            <div key={course._id} className="course-item">
               <h4>{course.title}</h4>
               <p>Trainer: {course.trainer}</p>
               <p>Mode: {course.mode}</p>
@@ -125,19 +129,21 @@ const AdminPage: React.FC = () => {
                   </li>
                 ))}
               </ul>
+              <button onClick={() => editCourse(course)}>Edit</button>
+              <button onClick={() => deleteCourse(course._id)}>Remove</button>
             </div>
           ))}
         </div>
       </div>
 
       {/* Manage Reviews Section */}
-      {/* <div>
+      {/* 
+      <div>
         <h2>Manage Reviews</h2>
         <button onClick={() => setShowReviewForm(!showReviewForm)}>
           {showReviewForm ? "Close Add Review Form" : "Add New Review"}
-        </button> */}
-
-        {/* {showReviewForm && (
+        </button> 
+        {showReviewForm && (
           <div className="review-form">
             <input type="text" name="name" placeholder="Reviewer Name" onChange={handleReviewChange} />
             <select name="course_id" onChange={handleReviewChange}>
@@ -152,11 +158,11 @@ const AdminPage: React.FC = () => {
             <textarea name="description" placeholder="Review Description" onChange={handleReviewChange}></textarea>
             <button onClick={addReview}>Add Review</button>
           </div>
-        )} 
-      </div> */}
+        )}
+      </div> 
+      */}
     </div>
   );
 };
 
 export default AdminPage;
-

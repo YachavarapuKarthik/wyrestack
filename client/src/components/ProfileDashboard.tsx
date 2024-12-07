@@ -2,11 +2,10 @@ import React, { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import axios from 'axios';
 
 const ProfileDashboard: React.FC = () => {
+  const userId = localStorage.getItem('userId'); // Assumes the user ID is stored in localStorage
   const [user, setUser] = useState({
-    name: '',
-    dob: '',
     email: '',
-    phone: '',
+    password: '',
   });
   const [isEditing, setIsEditing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -14,16 +13,21 @@ const ProfileDashboard: React.FC = () => {
   // Fetch user profile on load
   useEffect(() => {
     const fetchProfile = async () => {
+      if (!userId) {
+        setErrorMessage('User ID not found');
+        return;
+      }
+
       try {
-        const response = await axios.get('http://localhost:4000/profile', { withCredentials: true });
-        setUser(response.data);
+        const response = await axios.get(`http://localhost:5000/auth/profile/${userId}`);
+        setUser(response.data); // Populate user data
       } catch (error: any) {
-        setErrorMessage('Failed to fetch user data');
+        setErrorMessage(error.response?.data?.message || 'Failed to fetch user data');
       }
     };
 
     fetchProfile();
-  }, []);
+  }, [userId]);
 
   // Handle input changes
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,45 +39,65 @@ const ProfileDashboard: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    if (!userId) {
+      setErrorMessage('User ID not found');
+      return;
+    }
+
     try {
-      const response = await axios.put('http://localhost:4000/profile', user, { withCredentials: true });
+      const updatedData = {
+        email: user.email,
+      };
+
+      // // Include password only if the user has entered it
+      // if (user.password) {
+      //   updatedData['password'] = user.password;
+      // }
+
+      const response = await axios.put(`http://localhost:5000/auth/profile/${userId}`, updatedData);
       alert(response.data.message);
       setIsEditing(false);
+      setUser(response.data.user); // Update state with new user data
     } catch (error: any) {
-      setErrorMessage('Failed to update profile');
+      setErrorMessage(error.response?.data?.message || 'Failed to update profile');
     }
   };
 
   return (
     <div className="profile-dashboard">
       <h2>User Profile</h2>
+
       {errorMessage && <p className="error">{errorMessage}</p>}
+
       {!isEditing ? (
         <div>
-          <p><strong>Name:</strong> {user.name}</p>
-          <p><strong>Date of Birth:</strong> {user.dob}</p>
           <p><strong>Email:</strong> {user.email}</p>
-          <p><strong>Phone:</strong> {user.phone}</p>
           <button onClick={() => setIsEditing(true)}>Edit Profile</button>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Name:</label>
-            <input type="text" name="name" value={user.name} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
-            <label>Date of Birth:</label>
-            <input type="date" name="dob" value={user.dob} onChange={handleChange} required />
-          </div>
-          <div className="form-group">
             <label>Email:</label>
-            <input type="email" name="email" value={user.email} onChange={handleChange} required />
+            <input 
+              type="email" 
+              name="email" 
+              value={user.email} 
+              onChange={handleChange} 
+              required 
+            />
           </div>
+
           <div className="form-group">
-            <label>Phone:</label>
-            <input type="tel" name="phone" value={user.phone} onChange={handleChange} required />
+            <label>New Password (optional):</label>
+            <input 
+              type="password" 
+              name="password" 
+              value={user.password} 
+              onChange={handleChange} 
+              placeholder="Enter new password" 
+            />
           </div>
+
           <button type="submit">Save Changes</button>
           <button type="button" onClick={() => setIsEditing(false)}>Cancel</button>
         </form>
