@@ -4,35 +4,32 @@ import Cookies from 'js-cookie'; // For reading cookies
 
 const ProfileDashboard: React.FC = () => {
   const userEmail = Cookies.get('userEmail'); // Get email from cookies
-  const userId = Cookies.get('userId'); // Assuming the user ID is stored in cookies
   const [user, setUser] = useState({
     email: '',
-    password: '',
     name: '',
     dob: '',
     phone: '',
   });
   const [isEditing, setIsEditing] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [refreshProfile, setRefreshProfile] = useState(false); // New state to trigger re-fetch
 
-  // Fetch user profile on load
+  // Fetch user profile on load or when refreshProfile changes
   useEffect(() => {
     const fetchProfile = async () => {
-      if (!userId) {
-        setErrorMessage('User ID not found');
-        return;
-      }
-
       try {
-        const response = await axios.get(`http://localhost:5000/auth/profile/${userId}`);
+        const response = await axios.get(`http://localhost:5000/auth/profile/${userEmail}`);
+        console.log('Fetched user data:', response.data); // Log the fetched user data
         setUser(response.data); // Populate user data
       } catch (error: any) {
         setErrorMessage(error.response?.data?.message || 'Failed to fetch user data');
       }
     };
 
-    fetchProfile();
-  }, [userId]);
+    if (userEmail) {
+      fetchProfile();
+    }
+  }, [userEmail, refreshProfile]); // Re-fetch when refreshProfile state changes
 
   // Handle input changes
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -44,27 +41,25 @@ const ProfileDashboard: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!userId) {
-      setErrorMessage('User ID not found');
-      return;
-    }
-
     try {
-      const updatedData: any = {
+      const updatedData = {
         name: user.name,
         dob: user.dob,
         phone: user.phone,
       };
 
-      // Only include password if the user has entered it
-      if (user.password) {
-        updatedData.password = user.password;
-      }
+      console.log('Updating user data:', updatedData); // Log the updated data
 
-      const response = await axios.put(`http://localhost:5000/auth/profile/${userId}`, updatedData);
-      alert(response.data.message);
-      setIsEditing(false);
-      setUser(response.data.user); // Update state with new user data
+      const response = await axios.put(`http://localhost:5000/auth/profile/${userEmail}`, updatedData);
+      console.log('Updated user data:', response.data); // Log the updated response
+
+      // Ensure the user data is updated with the response from the backend
+      setUser(response.data.user);  // Update state with new user data
+      alert(response.data.message);  // Display success message
+      setIsEditing(false);  // Exit edit mode
+
+      // Trigger the profile re-fetch
+      setRefreshProfile((prev) => !prev); // Toggle to trigger the useEffect again
     } catch (error: any) {
       setErrorMessage(error.response?.data?.message || 'Failed to update profile');
     }
@@ -116,17 +111,6 @@ const ProfileDashboard: React.FC = () => {
               value={user.phone}
               onChange={handleChange}
               required
-            />
-          </div>
-
-          <div className="form-group">
-            <label>New Password (optional):</label>
-            <input
-              type="password"
-              name="password"
-              value={user.password}
-              onChange={handleChange}
-              placeholder="Enter new password"
             />
           </div>
 

@@ -13,8 +13,8 @@ function App(){
       <div className="app-container">
       
       <div className="content">
-      {/* <AdminPage/>
-    <CoursePage/> */}
+      <AdminPage/>
+    <CoursePage/> 
     <ProfileDashboard/>
       </div>
      

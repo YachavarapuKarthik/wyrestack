@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie'; // Import js-cookie
+//import Cookies from 'js-cookie'; // Import js-cookie
 
 interface Props {
   closePopup: () => void;

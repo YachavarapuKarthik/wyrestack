@@ -74,15 +74,20 @@ router.post('/login', async (req, res) => {
 });
 
 /**
- * @route GET /profile/:id
- * @desc Get a user's profile by ID
+ * @route GET /profile/:email
+ * @desc Get a user's profile by email
  */
-router.get('/profile/:id', async (req, res) => {
+router.get('/profile/:email', async (req, res) => {
   try {
-    const { id } = req.params;
+    const { email } = req.params;
 
-    // Find user by ID but exclude password from result
-    const user = await UserModel.findById(id).select('-password');
+    // Validate email format
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ message: 'Invalid email format' });
+    }
+
+    // Find user by email but exclude password from result
+    const user = await UserModel.findOne({ email }).select('-password');
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -96,34 +101,39 @@ router.get('/profile/:id', async (req, res) => {
 });
 
 /**
- * @route PUT /profile/:id
- * @desc Update the user's profile
+ * @route PUT /profile/:email
+ * @desc Update the user's profile using email
  */
-router.put('/profile/:id', async (req, res) => {
+router.put('/profile/:email', async (req, res) => {
   try {
-    const { id } = req.params;
-    const { name, dob, email, phone, password } = req.body;
+    const { email } = req.params;
+    const { name, dob, phone, password } = req.body;
 
-    // Check for allowed fields to update
-    const allowedFields = ['name', 'dob', 'email', 'phone', 'password'];
-    const updatedData = {};
-
-    Object.keys(req.body).forEach((key) => {
-      if (allowedFields.includes(key)) {
-        updatedData[key] = req.body[key];
-      }
-    });
-
-    // If the password is being updated, hash it before saving
-    if (updatedData.password) {
-      updatedData.password = await bcrypt.hash(updatedData.password, 10);
+    // Validate email format
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ message: 'Invalid email format' });
     }
 
-    // Update the user in the database
-    const updatedUser = await UserModel.findByIdAndUpdate(id, updatedData, { 
-      new: true, 
-      runValidators: true 
-    }).select('-password'); // Exclude password from response
+    // Prepare the updated data
+    const updatedData = {};
+
+    // Include only valid fields
+    if (name) updatedData.name = name;
+    if (dob) updatedData.dob = dob;
+    if (phone) updatedData.phone = phone;
+    
+
+    // // const existingUser = await UserModel.findOne({ email });
+    // // console.log('Existing User:', existingUser);
+    // console.log("upadated data",updatedData)
+
+    const updatedUser = await UserModel.findOneAndUpdate(
+      { email }, 
+     updatedData, // Use $set to explicitly update the fields
+     { new: true, runValidators: true }
+    );
+    
+    console.log('Updated User:', updatedUser);
 
     if (!updatedUser) {
       return res.status(404).json({ message: 'User not found' });
