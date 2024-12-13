@@ -13,9 +13,9 @@ function App(){
       <div className="app-container">
       
       <div className="content">
-      <AdminPage/>
+      {/* <AdminPage/>
     <CoursePage/> 
-    <ProfileDashboard/>
+    <ProfileDashboard/> */}
       </div>
      
     </div> 
