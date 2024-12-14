@@ -7,6 +7,8 @@ const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const courseRoutes = require('./routes/courseRoutes');
 // const reviewRoutes = require('./routes/reviewRoutes');
+const forgotPasswordRoutes = require('./routes/forgot-password'); // Path to your forgot-password.js file
+
 
 const app = express();
 const PORT = 5000;
@@ -27,6 +29,7 @@ mongoose
 // Routes
 app.use('/auth', authRoutes);
 app.use('/courses', courseRoutes);
+app.use('/forgot-password', forgotPasswordRoutes);
 // app.use('/reviews', reviewRoutes);
 
 // Start the server
