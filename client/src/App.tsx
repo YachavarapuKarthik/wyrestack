@@ -9,57 +9,37 @@ import LoginPopup from "./components/LoginPopup.tsx";
 import ForgotPassword from "./components/header/ForgotPassword.tsx";
 import Home from "./components/Home.tsx";
 
-function App() {
-
-  const [isPopupOpen, setPopupOpen] = useState(false);
-
+// Custom LoginPopupWrapper Component
+const LoginPopupWrapper = () => {
   const handleClosePopup = () => {
-    setPopupOpen(false);
+    // Implement close popup functionality
   };
 
   const handleOpenSignup = () => {
-    console.log('Opening signup page...');
-    // You can route to the signup page here, or open a signup form
+    // Implement open signup page functionality
   };
 
   const handleAuthSuccess = () => {
-    console.log('User authenticated successfully!');
-    // Perform any action on successful authentication (e.g., redirect, update UI)
+    // Implement authentication success functionality
   };
 
+  return (
+    <LoginPopup
+      closePopup={handleClosePopup}
+      openSignup={handleOpenSignup}
+      onAuthSuccess={handleAuthSuccess}
+    />
+  );
+};
 
+function App() {
   return (
     <BrowserRouter>
       <Header />
       <div className="app-container">
         <div className="content">
           <Routes>
-            {/* Home Route */}
-            <Route path="/" element={<Home />} />
-            
-            {/* Login Popup Route */}
-            <Route
-              path="/login"
-              element={
-                <LoginPopup
-                  closePopup={handleClosePopup}
-                  openSignup={handleOpenSignup}
-                  onAuthSuccess={handleAuthSuccess}
-                />
-              }
-            />
-            
-            {/* Forgot Password Route */}
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            
-            {/* Profile Dashboard Route */}
-            <Route path="/profile-dashboard" element={<ProfileDashboard />} />
-            
-            {/* Course Page Route */}
-            <Route path="/course-page" element={<CoursePage />} />
-            
-            {/* Admin Page Route */}
-            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/forgot-password" element={<ForgotPassword/>} />
           </Routes>
         </div>
       </div>
