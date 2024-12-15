@@ -2,14 +2,14 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+require('dotenv')
 
 // Route Imports
 const authRoutes = require('./routes/authRoutes');
 const courseRoutes = require('./routes/courseRoutes');
 // const reviewRoutes = require('./routes/reviewRoutes');
-const forgotPasswordRoutes = require('./routes/forgot-password'); // Path to your forgot-password.js file
-
-
+const forgotPasswordRoutes = require('./routes/forgotPasswordRoutes'); // Path to your forgot-password.js file
+const contactRoute = require('./routes/contactRoutes')
 const app = express();
 const PORT = 5000;
 
@@ -30,6 +30,7 @@ mongoose
 app.use('/auth', authRoutes);
 app.use('/courses', courseRoutes);
 app.use('/forgot-password', forgotPasswordRoutes);
+app.use('/contact',contactRoute)
 // app.use('/reviews', reviewRoutes);
 
 // Start the server

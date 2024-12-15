@@ -8,6 +8,7 @@ import AdminPage from "./components/AdminPage.tsx";
 import LoginPopup from "./components/LoginPopup.tsx";
 import ForgotPassword from "./components/header/ForgotPassword.tsx";
 import Home from "./components/Home.tsx";
+import ContactNow from "./components/ContactNow.tsx";
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
       <div className="app-container">
         <div className="content">
           <Routes>
-            <Route path="/" element = {<Home/>}/>
+            <Route path="/" element = {<ContactNow/>}/>
             <Route path="/forgot-password" element={<ForgotPassword/>} />
           </Routes>
         </div>
