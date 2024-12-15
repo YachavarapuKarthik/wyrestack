@@ -9,28 +9,6 @@ import LoginPopup from "./components/LoginPopup.tsx";
 import ForgotPassword from "./components/header/ForgotPassword.tsx";
 import Home from "./components/Home.tsx";
 
-// Custom LoginPopupWrapper Component
-const LoginPopupWrapper = () => {
-  const handleClosePopup = () => {
-    // Implement close popup functionality
-  };
-
-  const handleOpenSignup = () => {
-    // Implement open signup page functionality
-  };
-
-  const handleAuthSuccess = () => {
-    // Implement authentication success functionality
-  };
-
-  return (
-    <LoginPopup
-      closePopup={handleClosePopup}
-      openSignup={handleOpenSignup}
-      onAuthSuccess={handleAuthSuccess}
-    />
-  );
-};
 
 function App() {
   return (
@@ -39,6 +17,7 @@ function App() {
       <div className="app-container">
         <div className="content">
           <Routes>
+            <Route path="/" element = {<Home/>}/>
             <Route path="/forgot-password" element={<ForgotPassword/>} />
           </Routes>
         </div>

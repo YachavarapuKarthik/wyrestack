@@ -54,6 +54,7 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup, onAuthSuccess }) 
           </div>
           <button type="submit" className="submit-btn">Login</button>
           <div className="toggle-form">
+            <span onClick={() => { closePopup(); openSignup(); }}>ForgotPassword</span>
             <span onClick={() => { closePopup(); openSignup(); }}>Don't have an account? Sign up</span>
           </div>
         </form>
