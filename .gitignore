@@ -11,7 +11,7 @@ server/logs/
 
 # Environment variable files
 .env
-
+payment-gateway
 # npm package lock files (optional, if you don't want to track them)
 package-lock.json
 client/package-lock.json
