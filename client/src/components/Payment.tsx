@@ -1,27 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const Payment = () => {
   const [amount, setAmount] = useState<number>(100);  // Amount in INR, needs to be in paise (100 INR = 10000 paise)
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
-  const [razorpayLoaded, setRazorpayLoaded] = useState<boolean>(false);
-
-  // Load Razorpay script
-  useEffect(() => {
-    const loadRazorpayScript = () => {
-      const script = document.createElement('script');
-      script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-      script.onload = () => setRazorpayLoaded(true);
-      script.onerror = () => alert('Failed to load Razorpay script');
-      document.body.appendChild(script);
-    };
-
-    loadRazorpayScript();
-  }, []);
 
   const handlePayment = async () => {
-    if (!razorpayLoaded) {
+    if (!(window as any).Razorpay) {
       alert('Razorpay script is not loaded properly!');
       return;
     }

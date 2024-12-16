@@ -14,18 +14,16 @@ import Payment from "./components/Payment.tsx";
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Header />
       <div className="app-container">
         <div className="content">
-          <Routes>
-            <Route path="/" element = {<Payment/>}/>
-            <Route path="/forgot-password" element={<ForgotPassword/>} />
-          </Routes>
+          <Home/>
+          {/* <CoursePage/> */}
         </div>
       </div>
       <Footer />
-    </BrowserRouter>
+      </>
   );
 }
 
