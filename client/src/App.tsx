@@ -18,8 +18,13 @@ function App() {
       <Header />
       <div className="app-container">
         <div className="content">
-          <Home/>
-          {/* <CoursePage/> */}
+          {/* <Home/>
+          <CoursePage/> */}
+          Payment Form
+          
+          <Payment/>
+
+
         </div>
       </div>
       <Footer />

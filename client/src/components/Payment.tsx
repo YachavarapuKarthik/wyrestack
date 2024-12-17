@@ -23,7 +23,7 @@ const Payment = () => {
 
       // Razorpay payment options
       const options = {
-        key: 'your_test_key_id',  // Replace with your Razorpay key
+        key: 'rzp_test_bOwceQRO4AM94Q',  // Replace with your Razorpay key
         amount: orderAmount,  // Amount in paise
         currency: currency,
         name: 'Your Business Name',
