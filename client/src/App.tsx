@@ -24,7 +24,7 @@ function App() {
           {/* Payment Form
           
           <Payment/> */}
-        <OnlineCompiler/>
+        {/* <OnlineCompiler/> */}
 
         </div>
       </div>
