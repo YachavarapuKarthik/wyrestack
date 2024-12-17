@@ -4,7 +4,6 @@ import TopLine from './TopLine.tsx'
 function Header(){
     return (
         <>
-        <TopLine/>
         <NavBar/>
         </>
     );

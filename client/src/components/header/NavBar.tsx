@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo_dark.png"
 import LoginPopup from "../LoginPopup.tsx";
 import SignupPopup from "../SignupPopup.tsx";
 import userAvatar from "../../assets/user-avatar.png"; 
 import Cookies from "js-cookie"; // Import js-cookie
+import "../css/NavBar.css"
 
 function NavBar() {
   const [isLoginPopupVisible, setLoginPopupVisible] = useState(false);
@@ -52,11 +53,10 @@ function NavBar() {
             {/* Conditional rendering of buttons or user avatar */}
             {!isAuthenticated ? (
               <>
-                <button onClick={showLoginPopup} className="btn1">
-                  Login
-                </button>
-                <button onClick={showSignupPopup} className="btn1">
-                  Signup
+                <button onClick={showLoginPopup} className="button">
+                <div className="blob1"></div>
+                <div className="blob2"></div>
+                <div className="inner">Realism</div>
                 </button>
               </>
             ) : (
