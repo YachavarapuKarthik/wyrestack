@@ -11,6 +11,7 @@ const courseRoutes = require('./routes/courseRoutes');
 const forgotPasswordRoutes = require('./routes/forgotPasswordRoutes'); // Path to your forgot-password.js file
 const contactRoute = require('./routes/contactRoutes')
 const paymentRoute = require('./routes/paymentRoutes')
+const compilerRoute = require('./routes/codeEditorRoutes')
 
 const app = express();
 const PORT = 5000;
@@ -34,6 +35,7 @@ app.use('/courses', courseRoutes);
 app.use('/forgot-password', forgotPasswordRoutes);
 app.use('/contact',contactRoute)
 app.use('/payment',paymentRoute)
+app.use('/online-compiler',compilerRoute)
 
 // app.use('/reviews', reviewRoutes);
 

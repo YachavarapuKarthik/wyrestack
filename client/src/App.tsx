@@ -10,6 +10,7 @@ import ForgotPassword from "./components/header/ForgotPassword.tsx";
 import Home from "./components/Home.tsx";
 import ContactNow from "./components/ContactNow.tsx";
 import Payment from "./components/Payment.tsx";
+import OnlineCompiler from "./components/compiler/CodeEditor.tsx"
 
 
 function App() {
@@ -20,10 +21,10 @@ function App() {
         <div className="content">
           {/* <Home/>
           <CoursePage/> */}
-          Payment Form
+          {/* Payment Form
           
-          <Payment/>
-
+          <Payment/> */}
+        <OnlineCompiler/>
 
         </div>
       </div>
