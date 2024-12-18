@@ -1,7 +1,19 @@
+import Footer from "./footer/Footer";
+import Header from "./header/Header";
+import './css/Home.css'
+
 function Home(){
     return (
-
-        <h1>Home</h1>
+        <>
+        <Header/>
+        <div className="home-container">
+            <div className="block-1">
+                <h1>Embark your journey with our proffesionals</h1>
+            </div>
+        </div>
+        <Footer/>
+        </>
+        
     );
 }
 

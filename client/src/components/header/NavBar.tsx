@@ -4,7 +4,6 @@ import LoginPopup from "../LoginPopup.tsx";
 import SignupPopup from "../SignupPopup.tsx";
 import userAvatar from "../../assets/user-avatar.png"; 
 import Cookies from "js-cookie"; // Import js-cookie
-import "../css/NavBar.css"
 
 function NavBar() {
   const [isLoginPopupVisible, setLoginPopupVisible] = useState(false);
@@ -54,9 +53,7 @@ function NavBar() {
             {!isAuthenticated ? (
               <>
                 <button onClick={showLoginPopup} className="button">
-                <div className="blob1"></div>
-                <div className="blob2"></div>
-                <div className="inner">Realism</div>
+                <div className="inner">Login</div>
                 </button>
               </>
             ) : (
