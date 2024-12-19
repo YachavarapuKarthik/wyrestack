@@ -5,11 +5,12 @@ function Home(){
     return (
         <>
         <Header/>
-        <div className="home-container">
-            <div className="block-1">
-                <h1>Embark your journey with our proffesionals</h1>
+        <div className="hero-container">
+            <div className="hero-info">
+                <h1>Embark your journey with our professionals</h1>
+                <p>Master computer science with expert-led online courses and flexible classes. Learn, grow, and succeed in tech today!</p>
             </div>
-        </div>
+            </div>
         <Footer/>
         </>
         

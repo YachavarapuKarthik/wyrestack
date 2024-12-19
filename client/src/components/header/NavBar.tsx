@@ -1,19 +1,20 @@
 import { useState, useEffect } from "react";
-import logo from "../../assets/logo_dark.png"
+import logo from "../../assets/logo_dark.png";
 import LoginPopup from "../LoginPopup.tsx";
 import SignupPopup from "../SignupPopup.tsx";
-import userAvatar from "../../assets/user-avatar.png"; 
-import Cookies from "js-cookie"; // Import js-cookie
+import userAvatar from "../../assets/user-avatar.png";
+import Cookies from "js-cookie";
 
 function NavBar() {
   const [isLoginPopupVisible, setLoginPopupVisible] = useState(false);
   const [isSignupPopupVisible, setSignupPopupVisible] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Tracks login state
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const userToken = Cookies.get("userToken"); // Check if the user token is available in cookies
+    const userToken = Cookies.get("userToken");
     if (userToken) {
-      setIsAuthenticated(true); // User is authenticated
+      setIsAuthenticated(true);
     }
   }, []);
 
@@ -24,70 +25,84 @@ function NavBar() {
   const hideSignupPopup = () => setSignupPopupVisible(false);
 
   const handleAuthSuccess = (email: string, token: string) => {
-    setIsAuthenticated(true); // Mark user as authenticated
-    Cookies.set("userToken", token, { expires: 7 }); // Save token in cookies for 7 days
-    Cookies.set("userEmail", email, { expires: 7 }); // Optionally save email
+    setIsAuthenticated(true);
+    Cookies.set("userToken", token, { expires: 7 });
+    Cookies.set("userEmail", email, { expires: 7 });
     hideLoginPopup();
     hideSignupPopup();
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(false); // Mark user as logged out
-    Cookies.remove("userToken"); // Remove token from cookies
-    Cookies.remove("userEmail"); // Optionally remove email
+    setIsAuthenticated(false);
+    Cookies.remove("userToken");
+    Cookies.remove("userEmail");
   };
+
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <>
-      <div className="navbar">
-        <div className="navin">
-          <img className="logo" src={logo} alt="Logo" />
-          <div className="links">
-            <a href="#">Home</a>
-            <a href="#">Services</a>
-            <a href="#">Our Story</a>
-            <a href="#">Courses</a>
-            <a href="#">Contact</a>
-
-            {/* Conditional rendering of buttons or user avatar */}
-            {!isAuthenticated ? (
-              <>
-                <button onClick={showLoginPopup} className="button">
-                <div className="inner">Login</div>
+      <div className="nav-container">
+        <div className="navbar">
+          <div className="navin">
+            <img className="logo" src={logo} alt="Logo" />
+            <div
+              className={`hamburger ${isMenuOpen ? "open" : "close"}`}
+              onClick={toggleMenu}
+            >
+              <input type="checkbox" checked={isMenuOpen} onChange={toggleMenu} />
+              <svg viewBox="0 0 32 32">
+                <path className="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22" />
+                <path className="line" d="M7 16 27 16" />
+              </svg>
+            </div>
+            <div className={`links ${isMenuOpen ? "expanded" : ""}`}>
+              <a href="#" onClick={closeMenu}>Home</a>
+              <a href="#" onClick={closeMenu}>Services</a>
+              <a href="#" onClick={closeMenu}>Our Story</a>
+              <a href="#" onClick={closeMenu}>Courses</a>
+              <a href="#" onClick={closeMenu}>Contact</a>
+              {!isAuthenticated ? (
+                <button
+                  onClick={() => { closeMenu(); showLoginPopup(); }}
+                  className="button"
+                >
+                  <div className="inner">Login</div>
                 </button>
-              </>
-            ) : (
-              <div className="user-avatar-container">
-                <img
-                  src={userAvatar}
-                  alt="User Avatar"
-                  className="user-avatar"
-                  onClick={() => alert("Profile Menu Clicked!")} // Add functionality for profile menu
-                />
-                <button className="logout-btn" onClick={handleLogout}>
-                  Logout
-                </button>
-              </div>
-            )}
+              ) : (
+                <div className="user-avatar-container">
+                  <img
+                    src={userAvatar}
+                    alt="User Avatar"
+                    className="user-avatar"
+                    onClick={() => alert("Profile Menu Clicked!")}
+                  />
+                  <button
+                    className="logout-btn"
+                    onClick={() => { closeMenu(); handleLogout(); }}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Login Popup */}
       {isLoginPopupVisible && (
         <LoginPopup
           closePopup={hideLoginPopup}
           openSignup={showSignupPopup}
-          onAuthSuccess={handleAuthSuccess} // Pass success handler
+          onAuthSuccess={handleAuthSuccess}
         />
       )}
-
-      {/* Signup Popup */}
       {isSignupPopupVisible && (
         <SignupPopup
           closePopup={hideSignupPopup}
           openLogin={showLoginPopup}
-          onAuthSuccess={handleAuthSuccess} // Pass success handler
+          onAuthSuccess={handleAuthSuccess}
         />
       )}
     </>
