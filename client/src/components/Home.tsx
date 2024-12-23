@@ -49,7 +49,7 @@ function Home(){
 
           <div className="title">
               <p>Embark you Future with </p>
-              <p>Our Proffesionals</p>
+              <p id="gcolor">Our Proffesionals</p>
             </div>
 
             </div>

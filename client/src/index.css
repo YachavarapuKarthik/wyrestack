@@ -623,11 +623,16 @@ body{
     /* background-color: yellow; */
     display: flex;
     justify-content: center;
+    line-height: 120px;
   }
   .title p{
-    font-size: 0.6em;
-    letter-spacing: 3px;
+    font-size: 0.65em;
+    letter-spacing: 1px;
     text-align: center;
+    
+  }
+  #gcolor{
+    color: #00B36A;
   }
  
 
