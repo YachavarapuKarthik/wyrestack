@@ -48,8 +48,11 @@ function Home(){
           {/* Main PAge       */}
 
           <div className="title">
-              <p>Embark you Future with </p>
+            <div className="title-container">
+              <p>Embark your Future with </p>
               <p id="gcolor">Our Proffesionals</p>
+              <p id="cap">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam beatae blanditiis similique minus. Voluptatum delectus dolorem perferendis laboriosam reiciendis iste!</p>
+              </div>
             </div>
 
             </div>
