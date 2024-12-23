@@ -53,14 +53,14 @@ function Home(){
             </div>
 
             </div>
-<section className="hj">
+{/* <section className="hj">
 
 <div className="title" >
               <p>Embark you Future with </p>
               <p>Our Proffesionals</p>
-            </div>
-</section>
-        {/* <Footer/> */}
+            </div> */}
+{/* </section>
+        <Footer/> */}
         </>
         
     );
