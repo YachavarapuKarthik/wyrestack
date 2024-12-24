@@ -6,6 +6,10 @@ function LandingPage(){
         <>
         <Home/>
         <OurServices/>
+        <div className="wavy-text">
+        <span>L</span><span>E</span><span>T</span><span>'</span><span>S</span>
+        <span>S</span><span>T</span><span>A</span><span>R</span><span>T</span>
+        </div>
         </>
 
     );
