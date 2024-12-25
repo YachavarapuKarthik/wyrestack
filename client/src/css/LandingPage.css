@@ -1,8 +1,8 @@
 
 /* ==============================wavy text */
-
+/* 
 .wavy-text {
-    font-size: 5rem; /* Adjust the font size */
+    font-size: 5rem; 
     font-weight: bold;
     color: rgb(255, 255, 255);
     display: inline-block;
@@ -13,7 +13,7 @@
   
   .wavy-text span {
     display: inline-block;
-    transform: rotate(-10deg); /* Adds distortion */
+    transform: rotate(-10deg); 
     animation: float 1.5s ease-in-out ;
   }
   
@@ -33,7 +33,7 @@
       transform: translateY(-10px) rotate(10deg);
     }
   }
-  
+   */
   /* =======================================================================================================================
   ========================================== NAVBAR=========================================================================
   ========================================================================================================================== */
@@ -1356,4 +1356,576 @@
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
+  /*///////////////////////////////////////////////// courses starts ///////////////////////////////////////// */
+  .courses-section {
+    background-color:hsl(0,0%,7%);
+    color: #f4f4f4;
+    padding: 50px 20px;
+    text-align: center;
+  }
   
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color:hsl(155,100%,65%);
+  }
+  
+  /* Wrapper for cards and navigation buttons */
+  .courses-wrapper {
+    position: relative;
+  }
+  
+  .courses-container {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 20px;
+    scrollbar-width: none; /* For Firefox */
+  }
+  
+  .courses-container::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+  }
+  
+  .course-card {
+    flex: 0 0 calc(33.33% - 20px); /* 3 cards per row with spacing */
+    background: hsl(155,100%,65%,1%);
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    color:#fff;
+    border: 1px solid grey;
+  /* margin: 20px; */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    
+  }
+  
+  .course-card:hover {
+    transform: translateY(-10px);
+    background-color: hsl(155,100%,94%,1%);
+  }
+  
+  .course-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: hsl(0,0%,60%);
+  }
+  
+  .course-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    color:hsl(156,100%,85%);
+  }
+  
+  .icon-container {
+    margin-top: 20px;
+    font-size: 3rem;
+    color: #00ff7f;
+  }
+  .mode,
+.trainer {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 15px;
+  color: #333;
+}
+
+.discounted {
+  color: #e74c3c;
+  font-size: 1.25rem;
+}
+
+.original {
+  text-decoration: line-through;
+  color: #aaa;
+  margin-left: 10px;
+}
+
+.enroll-btn {
+  background-color: hsl(156,100%,85%);
+  color: #000;
+  padding: 12px 20px;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.enroll-btn:hover {
+  background-color:hsl(155,100%,65%);
+}
+
+.enroll-btn:focus {
+  outline: none;
+}
+  
+  /* Navigation Buttons */
+  .nav-btn-container {
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  .nav-btn {
+    background: hsl(0,0%,60%);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #1a1a1a;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav-btn:hover {
+    background-color: hsl(155,100%,85%);
+  }
+  /* Add this for the slide-up animation */
+.course-card {
+  opacity: 0; /* Hidden initially */
+  transform: translateY(20px); /* Start slightly below */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.course-card.slide-up {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Original position */
+}
+
+.image-container {
+  margin-bottom: 15px;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+
+  
+  /* Responsive Design */
+  @media screen and (max-width: 1024px) {
+    .course-card {
+      flex: 0 0 calc(50% - 20px); /* 2 cards per row for tablets */
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-btn-container {
+      display: none; /* Hide navigation buttons */
+    }
+  
+    .courses-container {
+      flex-direction: column; /* Stack cards vertically */
+    }
+  
+    .course-card {
+      flex: 0 0 auto; /* Auto size for vertical stacking */
+      margin: 10px 0;
+    }
+  }
+  /* //////////////////////////////////////////courses ends //////////////////////////////////////*/
+
+  /* testinomials starts */
+  
+  
+  .testimonials-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    text-align: center;
+    margin: 20px auto;
+    /* height:30vh; */
+  }
+  
+  .testimonials-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    
+  }
+  
+  .testimonials-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 400px;
+    overflow: visible;
+    align-items: center;
+  }
+  
+  .testimonial-item {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    opacity: 0;
+    transition: all 0.8s ease-in-out;
+  }
+  
+  .testimonial-item.visible {
+    top: 0;
+    opacity: 1;
+  }
+  
+  .testimonial-item:nth-child(odd) {
+    transform: translateX(-50%) rotate(-3deg);
+  }
+  
+  .testimonial-item:nth-child(even) {
+    transform: translateX(-50%) rotate(3deg);
+  }
+  
+  .testimonial-text {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #343435;
+  }
+  
+  .testimonial-author {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000;
+  }
+  
+  .stars {
+    color: #ffd700;
+    font-size: 1.2rem;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .testimonials-container {
+      padding: 0 20px;
+    }
+  
+    .testimonial-text {
+      font-size: 1rem;
+    }
+  
+    .testimonial-author {
+      font-size: 0.9rem;
+    }
+  }
+  /* //////////////////////////////////////////////////////////////////////////////////////////tetsinomials ends////////////////////////////////////////////////////////////////////////////////////////////// */
+
+  /*contact starts*/
+
+
+/* Section Styling */
+/* General Styling */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #000; /* Dark theme background */
+  color: #fff;
+}
+
+/* Section Styling */
+.contact-section {
+ 
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Full-screen height */
+  gap: 30px; /* Space between h1 and form */
+  position: relative;
+  overflow: hidden; /* Ensure animation is within bounds */
+}
+
+.contact-form {
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Form Group Styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+input, select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  background: #333;
+  color: #fff;
+}
+
+input::placeholder {
+  color: #999;
+}
+
+select {
+  cursor: pointer;
+}
+.wavy-text {
+  font-size: 5rem;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-transform: uppercase;
+  overflow: hidden; /* Prevent text overflow */
+}
+
+.wavy-text span {
+  display: inline-block;
+  animation: wave 2s infinite ease-in-out; /* Continuous animation */
+}
+
+.wavy-text span:nth-child(odd) {
+  animation-delay: 0.2s;
+}
+
+.wavy-text span:nth-child(even) {
+  animation-delay: 0.4s;
+}
+
+/* Keyframes for Smooth Wavy Animation */
+@keyframes wave {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .wavy-text {
+    font-size: 3rem;
+  }
+}
+
+/* Button Styling */
+.submit-btn {
+  grid-column: 1 / -1; /* Full width button */
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* contact ends */
+
+/*footer starts*/
+/* Footer Styles */
+/* Footer Container */
+.footer {
+  background-color: hsl(0,0%,7%);
+  color: #fff;
+  position: relative;
+  padding: 40px 20px 20px;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  z-index: 2;
+  position: relative;
+}
+
+/* Left Section */
+.footer-left {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-left .logo {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+.footer-text {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+
+
+
+/* Center Section */
+.footer-center {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-center h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-center ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-center ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* Right Section */
+.footer-right {
+  flex: 1;
+  min-width: 250px;
+}
+
+.newsletter-text {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.newsletter {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.newsletter-input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.newsletter-button {
+  padding: 10px 15px;
+  background-color: #c9ff00;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.newsletter-button:hover {
+  background-color: #a3d700;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  justify-content: space-evenly;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 18px;
+}
+
+.social-icons a:hover {
+  color: #c9ff00;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  border-top: 1px solid #333;
+  padding-top: 10px;
+}
+
+.footer-bottom-blocks::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    #fff 0,
+    #fff 10px,
+    #000 10px,
+    #000 20px
+  ); /* Creates black and white diagonal lines */
+  clip-path: polygon(
+    0% 0%,
+    100% 0%,
+    100% 50%,
+    90% 100%,
+    10% 100%,
+    0% 50%
+  ); /* Makes it look like blocks */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .newsletter {
+    flex-direction: column;
+  }
+
+  .newsletter-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+

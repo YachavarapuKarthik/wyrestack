@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Python for Beginners From Scratch",
+    "trainer": "Karthik Yachavarapu",
+    "price": {
+      "discounted": "₹549",
+      "original": "₹999"
+    },
+    "mode": "ONLINE",
+    "image": "./images/python.png"
+  },  
+  {
+    "title": "JavaScript Advanced Concepts",
+    "trainer": "Kowsik Vardhan",
+    "price": {
+      "discounted": "₹799",
+      "original": "₹1299"
+    },
+    "mode": "ONLINE",
+    "image": "javascript-course.jpg"
+  },
+  {
+    "title": "React Basics for Beginners",
+    "trainer": "Bhargav Reddy",
+    "price": {
+      "discounted": "₹799",
+      "original": "₹1499"
+    },
+    "mode": "ONLINE",
+    "image": "react-course.jpg"
+  }
+]
