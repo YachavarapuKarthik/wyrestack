@@ -1561,7 +1561,7 @@
   .testimonials-wrapper {
     position: relative;
     width: 100%;
-    min-height: 400px;
+    /* min-height: 400px; */
     overflow: visible;
     align-items: center;
   }

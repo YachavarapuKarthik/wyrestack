@@ -36,132 +36,190 @@ html{
 
 
 /* LoginPopup*/
-
 /* Modal Overlay */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(3px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  /* Modal Content */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Slightly darker overlay */
+  backdrop-filter: blur(12px); /* Enhanced blur */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-in-out; /* Smooth overlay fade-in */
+}
+
+/* Modal Content */
+.modal-content {
+  background: rgba(255, 255, 255, 0.15); /* Subtle white transparency */
+  backdrop-filter: blur(20px); /* Stronger glassmorphism effect */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px; /* Rounded corners for elegance */
+  padding: 40px 30px;
+  width: 90%;
+  max-width: 420px;
+  color: #ffffff;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); /* Deep shadow for pop effect */
+  animation: popUp 0.6s ease-out; /* Smooth pop-up animation */
+  position: relative;
+}
+
+/* Close Button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 22px;
+  color: #fff;
+  background: rgba(255, 75, 75, 0.3); /* Subtle red */
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 75, 75, 0.8); /* Intense red on hover */
+  transform: rotate(180deg) scale(1.2); /* Rotate + scale effect */
+}
+
+/* Form Heading */
+h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  background: linear-gradient(135deg, #4caf50, #81c784, #4caf50);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #f2f2f2;
+  margin-bottom: 8px;
+  font-size: 15px;
+  text-transform: capitalize;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2); /* Glow effect */
+}
+
+.form-group input:focus {
+  outline: none;
+  border: 2px solid #4caf50; /* Green border on focus */
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+/* Submit Button */
+.submit-btn {
+  background: linear-gradient(135deg, #11998e, #38ef7d); /* Multi-color gradient */
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+  /* box-shadow: 0 8px 15px rgba(0, 123, 255, 0.4);  */
+}
+
+.submit-btn:hover {
+  transform: scale(1.05); /* Slight zoom */
+  background: linear-gradient(135deg, #38ef7d, #11998e);
+  /* box-shadow: 0 12px 20px rgba(0, 123, 255, 0.6); */
+}
+
+/* Error Message */
+.error {
+  color: #ff4b4b;
+  font-weight: bold;
+  padding: 10px;
+  background: rgba(255, 75, 75, 0.1);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(255, 75, 75, 0.3);
+}
+
+/* Toggle Form */
+.toggle-form {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.toggle-form span {
+  color: #4caf50;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.toggle-form span:hover {
+  color: #81c784;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .modal-content {
-    background: white;
-    width: 400px;
-    padding: 20px;
-    border-radius: 8px;
-    position: relative;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 25px;
   }
-  
-  /* Close Button */
-  .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 20px;
-    background: none;
-    border: none;
-    color: #333;
-    cursor: pointer;
+
+  h3 {
+    font-size: 1.8rem;
   }
-  
-  /* Open Modal Button */
-  .open-modal-btn {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .open-modal-btn:hover {
-    background: #0056b3;
-  }
-  
-  /* Form Group */
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  /* Submit Button */
+
   .submit-btn {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
+    font-size: 15px;
   }
-  
-  .submit-btn:hover {
-    background: #218838;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  /* Toggle Form Text */
-  .toggle-form {
-    margin-top: 15px;
-    text-align: center;
+  to {
+    opacity: 1;
   }
-  
-  .toggle-form span {
-    color: #007bff;
-    cursor: pointer;
-    font-weight: bold;
+}
+
+@keyframes popUp {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
   }
-  
-  .toggle-form span:hover {
-    text-decoration: underline;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-    
-/* icon css */
-.user-avatar-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .user-avatar {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  
-  .logout-btn {
-    background-color: transparent;
-    color: #007bff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .logout-btn:hover {
-    text-decoration: underline;
-  }
-  
+}
+
+
 /* Footer */
 
 .footer {
