@@ -1,0 +1,178 @@
+
+    /*OURSERVICES/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+  
+
+    
+.Ocontainer{
+    width: 100%;
+    height: auto;
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: center;
+  }
+  .Oinfo{
+    width: 90%;
+    height: 100%;
+    /* background-color: blue; */
+    display: flex;
+
+  }
+  .Omatter{
+    height: 100%;
+    width: 50%;
+    margin-right: 70px;
+
+  }
+  .Omatter h2{
+    font-size: 3rem;
+    color: var(--primary);
+  }
+  .Omatter p{
+    margin-top: 25px;
+    font-size: 1.3rem;
+    color: var(--accent);
+  }
+  .Ocourses{
+    width: 50%;
+    height: 100%;
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .cor{
+    height: 65px;
+    width: 90%;
+    padding: 0 15px;
+    margin-top: 15px;
+    border: 1px solid grey;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.3rem;
+    color: var(--accent);
+    transition: all 0.1s ease-in-out;
+  }
+  .cor1{
+    margin-top: 95px;
+
+  }
+  .cor:hover{
+    scale:1.05;
+    background-color: var(--primaryBg);
+  }
+  /* Tablet (max-width: 1024px) */
+/* Tablet (max-width: 1024px) */
+@media (max-width: 1190px) {
+  .Ocontainer {
+    height: auto;
+    /* margin-top: 70px; */
+    width: 100%;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
+  .Oinfo {
+    width: 80%;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+  }
+
+  .Omatter, .Ocourses {
+    width: 100%; /* Full width for both sections */
+    margin-right: 0; /* Remove right padding for Omatter */
+  }
+
+  .Omatter h2 {
+    font-size: 2.5rem; /* Adjust heading size */
+  }
+
+  .Omatter p {
+    font-size: 1.2rem; /* Adjust paragraph size */
+  }
+
+  .cor {
+    width: 100%;
+    font-size: 1.2rem; /* Slightly smaller text for course boxes */
+  }
+
+  .cor1 {
+    margin-top: 50px; /* Reduce top margin for the first course */
+  }
+}
+
+/* Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+  .Ocontainer {
+    padding: 10px; /* Add some padding around the container */
+    width: 100%;
+    height: auto;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  .Oinfo{
+    width: 95%;
+  }
+  .Omatter, .Ocourses {
+    width: 100%; /* Full width for both sections */
+    margin-right: 0; /* Remove right padding for Omatter */
+  }
+
+
+  .Omatter h2 {
+    font-size: 2rem; /* Further adjust heading size */
+  }
+
+  .Omatter p {
+    font-size: 1rem; /* Further adjust paragraph size */
+  }
+
+  .cor {
+    width: 100%;
+    height: 55px; /* Reduce height of course boxes */
+    font-size: 1rem; /* Reduce font size */
+  }
+
+  .cor1 {
+    margin-top: 30px; /* Further reduce top margin */
+  }
+
+  .darrow {
+    font-size: 1.2rem; /* Adjust arrow size for better fit */
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .Ocontainer {
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+  .Omatter, .Ocourses {
+    width: 100%; /* Full width for both sections */
+    margin-right: 0; /* Remove right padding for Omatter */
+  }
+
+
+  .Omatter h2 {
+    font-size: 1.8rem; /* Smaller heading for very small screens */
+  }
+
+  .Omatter p {
+    font-size: 1rem; /* Smaller text for better readability */
+  }
+
+  .cor {
+    width: 100%;
+    height: 50px; /* Further reduce height */
+    font-size: 0.9rem; /* Smaller font size */
+  }
+
+  .darrow {
+    font-size: 1rem; /* Adjust arrow size for small screens */
+  }
+}
+

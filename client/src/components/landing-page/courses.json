@@ -7,7 +7,7 @@
       "original": "₹999"
     },
     "mode": "ONLINE",
-    "image": "./images/python.png"
+    "image": "/../assets/images/python.png"
   },  
   {
     "title": "JavaScript Advanced Concepts",

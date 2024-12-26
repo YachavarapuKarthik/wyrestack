@@ -1,17 +1,7 @@
-import Footer from "../footer/Footer";
-import Header from "../header/Header";
-
 function Home() {
   return (
     <>
-      <Header />
-      {/* <div className="hero-container">
-            <div className="title">
-                <p>Embark your journey with our professionals</p>
-                <p>Master computer science with expert-led online courses and flexible classes. Learn, grow, and succeed in tech today!</p>
-            </div>
-            </div> */}
-
+  
       {/* Background Animation  */}
       <div className="container">
         <div className="grid">
@@ -57,14 +47,6 @@ function Home() {
         </div>
 
       </div>
-      {/* <section className="hj">
-
-<div className="title" >
-              <p>Embark you Future with </p>
-              <p>Our Proffesionals</p>
-            </div> */}
-      {/* </section>
-        <Footer/> */}
     </>
 
   );
