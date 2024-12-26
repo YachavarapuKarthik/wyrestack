@@ -1,7 +1,10 @@
  
   /* testinomials starts */
   
-  
+.testimonials-heading{
+    color: var(--text);
+}
+
   .testimonials-container {
     display: flex;
     flex-direction: column;

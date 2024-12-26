@@ -35,7 +35,7 @@ function Testimonials() {
 
   return (
     <div className="testimonials-container">
-      <h2>Our Students Say</h2>
+      <h2 className="testimonials-heading">Our Students Say</h2>
       <div className="testimonials-wrapper">
         {testimonialsData.map((testimonial, index) => (
           <div
