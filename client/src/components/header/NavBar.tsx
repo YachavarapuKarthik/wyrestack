@@ -59,10 +59,10 @@ function NavBar() {
               </svg>
             </div>
             <div className={`links ${isMenuOpen ? "expanded" : ""}`}>
-              <a href="#" onClick={closeMenu}>Home</a>
+              <a href="/" onClick={closeMenu}>Home</a>
               <a href="#" onClick={closeMenu}>Services</a>
               <a href="#" onClick={closeMenu}>Our Story</a>
-              <a href="#" onClick={closeMenu}>Courses</a>
+              <a href="/courses" onClick={closeMenu}>Courses</a>
               <a href="#" onClick={closeMenu}>Contact</a>
               {!isAuthenticated ? (
                 <button
