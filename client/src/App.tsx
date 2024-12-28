@@ -1,36 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import Loader from "./components/Loader.tsx"
+import Loader from "./components/Loader.tsx";
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import './css/Loader.css';
 import LandingPage from './components/landing-page/LandingPage.tsx';
-import Upskill from './components/upskill/upskill.tsx';
-import './css/LandingPage.css'
-import './css/Loader.css'
-
+import CoursesLanding from './components/courses/CoursesLanding.tsx';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true); 
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 3000);
+    const timer = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timer); 
   }, []);
 
   return (
-    <>
+    <BrowserRouter>
       {isLoading ? (
         <Loader /> 
       ) : (
-        <>
-        
-        <div className='app-container'>
-          <div className='content'>
-            <Upskill/>
-          </div>
-
-        </div>
-
-        </>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/courses" element={<CoursesLanding/>} /> 
+        </Routes>
       )}
-    </>
+    </BrowserRouter>
   );
 }
 
