@@ -60,7 +60,7 @@ function Courses() {
                                 <span className="discounted">{course.price.discounted}</span>
                                 <span className="original">{course.price.original}</span>
                             </p>
-                            <button className="enroll-btn">Enroll Now</button>
+                            <button className="enroll-btn"  onClick={() => window.location.href = '/courses/coursedashboard'} >Enroll Now</button>
                         </div>
                     ))}
                 </div>

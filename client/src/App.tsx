@@ -4,12 +4,13 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import './css/Loader.css';
 import LandingPage from './components/landing-page/LandingPage.tsx';
 import CoursesLanding from './components/courses/CoursesLanding.tsx';
+import CourseDashboard from './components/courses/CouseDashboard.tsx';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true); 
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1000);
+    const timer = setTimeout(() => setIsLoading(false), 800);
     return () => clearTimeout(timer); 
   }, []);
 
@@ -21,6 +22,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/courses" element={<CoursesLanding/>} /> 
+          <Route path="/courses/coursedashboard" element={<CourseDashboard/>}/>
         </Routes>
       )}
     </BrowserRouter>
