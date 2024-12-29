@@ -1,4 +1,132 @@
-h1{
-    color: white;
-    padding-top: 100px;
+@import url('https://fonts.googleapis.com/css?family=Manrope:700|Manrope:400');
+
+:root {
+  --text: hsl(0, 0%, 99%);
+  --textDim: hsl(0, 0%, 60%);
+  --background: hsl(0, 0%, 7%);
+  --primary: hsl(155, 100%, 65%);
+  --primaryBg: hsla(155, 100%, 65%, 1%);
+  --primaryHi: hsla(155, 100%, 75%, 25%);
+  --primaryFg: hsl(155, 100%, 85%);
+  --secondary: hsl(156, 51%, 14%);
+  --secondaryFg: hsl(156, 51%, 75%);
+  --secondaryBg: hsla(156, 51%, 14%, 5%);
+  --secondaryHi: hsla(156, 51%, 30%, 50%);
+  --accent: hsl(155, 100%, 94%);
+  --accentBg: hsla(155, 100%, 94%, 1%);
+  --accentHi: hsla(155, 100%, 100%, 25%);
 }
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Manrope';
+    box-sizing: border-box; 
+   
+  } 
+.dash-container{
+    width: 100%;
+    min-height: 100vh;
+
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: center;
+    margin-top: 65px;
+}
+.dash-info{
+    width: 75%;
+    height: 100%;
+    /* background-color: blue; */
+    display: flex;
+}
+.dash-left{
+    width: 70%;
+    height: 100%;
+    /* background-color: green; */
+}
+.dash-right{
+    width: 25%;
+    height: 85%;
+    /* background-color: red; */
+    position: fixed;
+    top: 68px;
+    right: 10%;
+    border: 1px solid grey;
+    border-radius: 7px;
+
+    /* right: 10%; */
+}
+.corsinfo{
+    padding-left: 15px;
+}
+.corsinfo h2{
+    font-size: 3rem;
+    margin-top: 70px;
+    color: var(--primary);
+}
+.corsinfo h4{
+    font-size: 2rem;
+    margin-top:10px;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+.corsinfo p{
+    font-size: 1.2rem;
+    margin-right: 70px;
+    color:var(--accent)
+}
+.vidplay {
+    width: 100%; 
+    min-height: 300px;
+    padding-bottom: 56.25%; /* Aspect ratio of 16:9 */
+    height: 0; /* Height is calculated based on padding-bottom */
+    /* background-color: pink; */
+    /* margin-bottom: 90px; */
+   
+  }
+  .vidplay iframe{
+    width: 95%;
+    border-radius: 7px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  .vidinfo{
+    height: auto;
+    width: 100%;
+    /* background-color: blueviolet; */
+  }
+  .vidcap{
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+  }
+  .offprice{
+    font-size: 2rem;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .actprice{
+    font-size: 1.2rem;
+    color: grey;
+    text-decoration: line-through;
+    margin-right: 10px;
+  }
+  .off{
+    font-size: 1.2rem;
+    color: var(--primary);
+  }
+  .enroll{
+    width: 95%;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 15px;
+    font-size: 1.2rem;
+    background-color: rgb(27, 129, 27);
+  }
+  .payback {
+    color: grey;
+    font-size: 1rem;
+    margin-top: 15px;
+    text-align: center;
+  }
