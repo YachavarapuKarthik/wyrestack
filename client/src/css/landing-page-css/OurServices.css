@@ -40,7 +40,9 @@
     /* background-color: pink; */
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    padding-bottom: 15px;
   }
   
   .cor{
@@ -61,7 +63,7 @@
 
   }
   .cor:hover{
-    scale:1.05;
+    scale:1.01;
     background-color: var(--primaryBg);
   }
   /* Tablet (max-width: 1024px) */

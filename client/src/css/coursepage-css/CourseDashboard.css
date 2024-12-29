@@ -34,7 +34,7 @@
     margin-top: 65px;
 }
 .dash-info{
-    width: 75%;
+    width: 90%;
     height: 100%;
     /* background-color: blue; */
     display: flex;
@@ -72,7 +72,7 @@
 }
 .corsinfo p{
     font-size: 1.2rem;
-    margin-right: 70px;
+    margin-right: 100px;
     color:var(--accent)
 }
 .vidplay {
@@ -81,7 +81,7 @@
     padding-bottom: 56.25%; /* Aspect ratio of 16:9 */
     height: 0; /* Height is calculated based on padding-bottom */
     /* background-color: pink; */
-    /* margin-bottom: 90px; */
+    margin-bottom: 40px;
    
   }
   .vidplay iframe{
