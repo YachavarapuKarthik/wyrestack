@@ -3,7 +3,7 @@
 body {
   background-color: var(--background);
   margin: 0; /* Remove default margin */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .loader-wrapper {
