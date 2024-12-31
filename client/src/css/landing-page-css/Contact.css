@@ -7,12 +7,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Full-screen height */
+    height: 120vh; /* Full-screen height */
     gap: 30px; /* Space between h1 and form */
     position: relative;
     overflow: hidden; /* Ensure animation is within bounds */
   }
-  
+  .contact-section h1{
+    color:#fff;
+  }
   .contact-form {
     width: 100%;
     max-width: 800px;

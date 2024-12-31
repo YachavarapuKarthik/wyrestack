@@ -1,10 +1,10 @@
 import Header from "../header/Header";
 import Contact from "./contact";
 import Courses from "./Courses";
-import Footer from "./Footer";
+import Footer from "./footer";
 import Home from "./Home";
 import OurServices from "./OurServices";
-// import Testinomials from "./Testinomials";
+import Testinomials from "./Testinomials";
 import "../../css/landing-page-css/NavBar.css"
 import "../../css/landing-page-css/Home.css"
 import "../../css/landing-page-css/OurServices.css"
@@ -21,7 +21,7 @@ function LandingPage(){
         <OurServices/>
         
         <Courses/>
-        {/* <Testinomials/> */}
+        <Testinomials/>
         <Contact/>
         
         <Footer/>
