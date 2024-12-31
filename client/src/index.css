@@ -37,68 +37,82 @@ html{
 
 /* LoginPopup*/
 /* Modal Overlay */
-.modal-overlay {
+.login-content {
+  background: rgba(24, 24, 24, 0.8); /* Dark background with slight transparency */
+  backdrop-filter: blur(20px); /* Glassmorphism blur effect */
+  border-radius: 20px; /* Smooth rounded corners */
+  padding: 40px 30px; /* Generous padding */
+  width: 90%;
+  max-width: 420px; /* Restrict the maximum width */
+  color: #ffffff; /* White text for readability */
+  position: relative;
+  box-shadow: 0px 8px 32px rgba(0, 0, 0, 0.2); /* Subtle box shadow */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Fine border for elegance */
+  overflow: hidden; /* Ensure the glow doesn't overflow */
+}
+
+.login-content::before {
+  content: '';
+  position: absolute;
+  top: -20px; /* Adjust the position of the glow */
+  left: -30px; /* Adjust the position of the glow */
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+  filter: blur(50px); /* Smooth glowing effect */
+  z-index: 1;
+}
+
+
+.login-content h3 {
+  position: relative;
+  z-index: 2; 
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.login-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Slightly darker overlay */
-  backdrop-filter: blur(12px); /* Enhanced blur */
+  background: rgba(0, 0, 0, 0.6); /* Dim background overlay */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
-  animation: fadeIn 0.5s ease-in-out; /* Smooth overlay fade-in */
+  z-index: 1000; /* Ensure modal is above other content */
 }
 
-/* Modal Content */
-.modal-content {
-  background: rgba(255, 255, 255, 0.15); /* Subtle white transparency */
-  backdrop-filter: blur(20px); /* Stronger glassmorphism effect */
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 20px; /* Rounded corners for elegance */
-  padding: 40px 30px;
-  width: 90%;
-  max-width: 420px;
-  color: #ffffff;
-  text-align: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); /* Deep shadow for pop effect */
-  animation: popUp 0.6s ease-out; /* Smooth pop-up animation */
-  position: relative;
-}
-
-/* Close Button */
-.close-btn {
+.login-img {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 22px;
-  color: #fff;
-  background: rgba(255, 75, 75, 0.3); /* Subtle red */
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  top: -10px;
+  left: -10px;
+  width: 80px;
+  transform: rotate(15deg);
+  height: auto;
+  z-index: 100;
 }
+/* Close Button */
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 40px;
+    cursor: pointer;
+    color: #fff;
+    background: rgba(0, 0, 0, 0); 
+    border: none;
+    border-radius: 50%;
+  }
 
 .close-btn:hover {
-  background: rgba(255, 75, 75, 0.8); /* Intense red on hover */
-  transform: rotate(180deg) scale(1.2); /* Rotate + scale effect */
+  background: rgba(0, 0, 0, 0); 
+  Color: rgb(255, 68, 68); /* Intense red on hover */
 }
 
-/* Form Heading */
-h3 {
-  font-size: 2rem;
-  font-weight: bold;
-  background: linear-gradient(135deg, #4caf50, #81c784, #4caf50);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-}
 
 /* Form Group Styling */
 .form-group {
@@ -110,7 +124,7 @@ h3 {
   color: #f2f2f2;
   margin-bottom: 8px;
   font-size: 15px;
-  text-transform: capitalize;
+
 }
 
 .form-group input {
@@ -125,23 +139,17 @@ h3 {
   box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2); /* Glow effect */
 }
 
-.form-group input:focus {
-  outline: none;
-  border: 2px solid #4caf50; /* Green border on focus */
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
-}
 
 /* Submit Button */
 .submit-btn {
-  background: linear-gradient(135deg, #11998e, #38ef7d); /* Multi-color gradient */
+  /* background: linear-gradient(135deg, #252525, #272727); Multi-color gradient */
+  background:rgba(255, 255, 255, 0.2);
   color: white;
   border: none;
   padding: 14px 20px;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
-  text-transform: uppercase;
   cursor: pointer;
   width: 100%;
   transition: all 0.3s ease;
@@ -149,7 +157,6 @@ h3 {
 }
 
 .submit-btn:hover {
-  transform: scale(1.05); /* Slight zoom */
   background: linear-gradient(135deg, #38ef7d, #11998e);
   /* box-shadow: 0 12px 20px rgba(0, 123, 255, 0.6); */
 }
@@ -159,10 +166,9 @@ h3 {
   color: #ff4b4b;
   font-weight: bold;
   padding: 10px;
-  background: rgba(255, 75, 75, 0.1);
   border-radius: 8px;
   margin-bottom: 15px;
-  box-shadow: 0 0 10px rgba(255, 75, 75, 0.3);
+  text-align: center;
 }
 
 /* Toggle Form */
@@ -185,7 +191,7 @@ h3 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .modal-content {
+  .login-content {
     padding: 25px;
   }
 

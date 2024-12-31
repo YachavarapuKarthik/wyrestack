@@ -1,7 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
 // import Cookies from 'js-cookie'; // Import js-cookie
-
+import image from '../assets/login-astro.png';
 interface Props {
   closePopup: () => void;
   openLogin: () => void;
@@ -34,8 +34,9 @@ const SignupPopup: React.FC<Props> = ({ closePopup, openLogin, onAuthSuccess }) 
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
+    <div className="login-container">
+      <div className="login-content">
+      <img className="login-img" src={image}/>
         <button className="close-btn" onClick={closePopup}>×</button>
         <h3>Sign Up</h3>
         {errorMessage && <p className="error">{errorMessage}</p>}

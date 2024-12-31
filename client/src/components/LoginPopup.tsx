@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import axios from 'axios';
+import image from '../assets/login-astro.png';
 //import Cookies from 'js-cookie'; // Import js-cookie
 
 interface Props {
@@ -28,10 +29,11 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup, onAuthSuccess }) 
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
+    <div className="login-container">
+      <div className="login-content">
+      <img className="login-img" src={image} alt="Description of image" />
         <button className="close-btn" onClick={closePopup}>×</button>
-        <h3>Login</h3>
+        <h3 >Login</h3>
         {errorMessage && <p className="error">{errorMessage}</p>}
         <form onSubmit={handleLogin}>
           <div className="form-group">
@@ -53,8 +55,9 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup, onAuthSuccess }) 
             />
           </div>
           <button type="submit" className="submit-btn">Login</button>
-          <div className="toggle-form">
+          <div className="toggle-form" style={{textAlign:"center"}}>
             <span onClick={() => { closePopup(); openSignup(); }}>ForgotPassword</span>
+            <br></br>
             <span onClick={() => { closePopup(); openSignup(); }}>Don't have an account? Sign up</span>
           </div>
         </form>
