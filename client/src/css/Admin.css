@@ -1,0 +1,102 @@
+/* Global Styles */
+  /* Admin Page Styles */
+  .admin-page {
+    padding: 20px;
+  }
+  
+  .admin-page__title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .admin-page__courses-section {
+    margin-top: 20px;
+  }
+  
+  .admin-page__subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Form Styles */
+  .course-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .course-form__input,
+  .course-form__textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .course-form__textarea {
+    height: 80px;
+    resize: none;
+  }
+  
+  /* Button Styles */
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .btn--toggle-form {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .btn--submit {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .btn--edit {
+    background-color: #ffc107;
+    color: #333;
+  }
+  
+  .btn--delete {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  /* Course List Styles */
+  .course-list {
+    margin-top: 20px;
+  }
+  
+  .course-list__title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+  }
+  
+  .course-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    margin-bottom: 10px;
+  }
+  
+  .course-item__title {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .course-item__trainer,
+  .course-item__mode,
+  .course-item__price {
+    margin: 5px 0;
+  }
+  
