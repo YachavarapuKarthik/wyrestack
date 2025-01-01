@@ -57,6 +57,28 @@ router.get('/', async (req, res) => {
 });
 
 /**
+ * @route GET /courses/:id
+ * @desc Get a specific course by ID
+ */
+router.get('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const course = await CourseModel.findById(id).populate('reviews');
+
+    if (!course) {
+      return res.status(404).json({ message: 'Course not found' });
+    }
+
+    res.status(200).json(course);
+  } catch (error) {
+    console.error('Error fetching course:', error);
+    res.status(500).json({ 
+      message: 'Error fetching course', 
+      error: error.message 
+    });
+  }
+});
+/**
  * @route PUT /courses/edit/:id
  * @desc Edit an Existing Course by ID
  */
