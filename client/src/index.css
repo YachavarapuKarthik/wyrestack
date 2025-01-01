@@ -88,10 +88,10 @@ html{
 
 .login-img {
   position: absolute;
-  top: -10px;
-  left: -10px;
+  top: -15px;
+  left: -20px;
   width: 80px;
-  transform: rotate(15deg);
+  transform: rotate(35deg);
   height: auto;
   z-index: 100;
 }
@@ -142,8 +142,8 @@ html{
 
 /* Submit Button */
 .submit-btn {
-  /* background: linear-gradient(135deg, #252525, #272727); Multi-color gradient */
-  background:rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #252525, #272727); 
+  /* background:rgba(255, 255, 255, 0.2); */
   color: white;
   border: none;
   padding: 14px 20px;

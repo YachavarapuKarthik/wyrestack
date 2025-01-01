@@ -8,7 +8,7 @@ require('dotenv').config()
 const authRoutes = require('./routes/authRoutes');
 const courseRoutes = require('./routes/courseRoutes');
 // const reviewRoutes = require('./routes/reviewRoutes');
-const forgotPasswordRoutes = require('./routes/forgotPasswordRoutes'); // Path to your forgot-password.js file
+// const forgotPasswordRoutes = require('./routes/forgotPasswordRoutes'); // Path to your forgot-password.js file
 const contactRoute = require('./routes/contactRoutes')
 const paymentRoute = require('./routes/paymentRoutes')
 const compilerRoute = require('./routes/codeEditorRoutes')
@@ -32,7 +32,7 @@ mongoose
 // Routes
 app.use('/auth', authRoutes);
 app.use('/courses', courseRoutes);
-app.use('/forgot-password', forgotPasswordRoutes);
+// app.use('/forgot-password', forgotPasswordRoutes);
 app.use('/contact',contactRoute)
 app.use('/payment',paymentRoute)
 app.use('/online-compiler',compilerRoute)
