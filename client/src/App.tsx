@@ -5,6 +5,8 @@ import './css/Loader.css';
 import LandingPage from './components/landing-page/LandingPage.tsx';
 import CoursesLanding from './components/courses/CoursesLanding.tsx';
 import CourseDashboard from './components/courses/CouseDashboard.tsx';
+import Payment from './components/Payment.tsx';
+import CoursePage from './components/CoursePage.tsx';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true); 
@@ -22,7 +24,8 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/courses" element={<CoursesLanding/>} /> 
-          <Route path="/courses/coursedashboard" element={<CourseDashboard/>}/>
+          <Route path="/courses/coursedashboard" element={<CoursePage/>}/>
+          <Route path="/payment" element ={<Payment/>} />
         </Routes>
       )}
     </BrowserRouter>

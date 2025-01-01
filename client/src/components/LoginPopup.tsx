@@ -28,6 +28,9 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup, onAuthSuccess }) 
       closePopup();
     } catch (error: any) {
       setErrorMessage(error.response?.data?.message || 'An error occurred');
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 5000);
     }
   };
 
@@ -40,6 +43,9 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup, onAuthSuccess }) 
       setMode('verifyOtp');
     } catch (error: any) {
       setErrorMessage(error.response?.data?.message || 'Failed to send OTP');
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 5000);
     }
   };
 

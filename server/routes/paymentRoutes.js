@@ -46,54 +46,44 @@ router.post('/create-order', async (req, res) => {
 router.post('/payment-success', async (req, res) => {
   const { order_id, payment_id, user_email, user_name } = req.body;
 
-  // Log incoming request data
-  console.log("Received payment success data:", req.body);
+  console.log("Payment success route hit with data:", req.body);
 
-  // Validate payment_id
   if (!payment_id) {
-    console.log("Paayment id is missing ")
     return res.status(400).json({ success: false, message: 'payment_id is missing' });
   }
 
   try {
-    console.log("Verifying payment with ID:", payment_id);
-
-    // Fetch payment details from Razorpay
+    console.log("Fetching payment details for ID:", payment_id);
     const paymentDetails = await razorpayInstance.payments.fetch(payment_id);
 
-    // Log payment details
-    console.log("Payment details:", paymentDetails);
+    if (!paymentDetails) {
+      throw new Error('Payment details not found!');
+    }
 
-    // Optionally capture payment explicitly if authorized
+    console.log("Payment details fetched:", paymentDetails);
+
     if (paymentDetails.status === 'authorized') {
+      console.log("Capturing authorized payment...");
       await razorpayInstance.payments.capture(payment_id, paymentDetails.amount);
     }
 
-    // Save transaction details in the database
-    console.log("Saving transaction to the database");
-
+    console.log("Saving transaction to the database...");
     const transaction = new Transaction({
-      order_id: order_id, // Order ID from the frontend
-      payment_id: paymentDetails.id, // Razorpay payment ID
-      status: paymentDetails.status, // Payment status (captured, failed, etc.)
-      amount: paymentDetails.amount / 100, // Convert to INR
-      currency: paymentDetails.currency, // Currency (e.g., INR)
-      user_email: user_email, // User email from the frontend
-      user_name: user_name, // User name from the frontend
+      order_id,
+      payment_id,
+      status: paymentDetails.status,
+      amount: paymentDetails.amount / 100,
+      currency: paymentDetails.currency,
+      user_email,
+      user_name,
     });
 
-    // Log the transaction data
-    console.log("Transaction data to be saved:", transaction);
-
-    // Save to database
     await transaction.save();
 
     res.json({ success: true, message: 'Payment successful and transaction recorded!' });
-    console.log('Payment successful and transaction recorded!');
-
   } catch (err) {
-    console.error("Error capturing payment:", err.message || err);
-    res.status(500).json({ success: false, message: 'Payment verification failed!' });
+    console.error("Error in payment-success route:", err.message || err);
+    res.status(500).json({ success: false, message: 'Payment verification or recording failed!' });
   }
 });
 
