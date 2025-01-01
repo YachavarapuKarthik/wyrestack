@@ -37,7 +37,7 @@ router.post('/signup', async (req, res) => {
 
     res.status(201).json({ 
       message: 'User created successfully', 
-      user: newUser 
+      // user: newUser 
     });
   } catch (error) {
     console.error('Error during signup:', error);
@@ -192,6 +192,28 @@ router.post('/request-otp', otpLimiter, async (req, res) => {
     res.status(200).json({ message: 'OTP sent successfully' });
   } catch (error) {
     res.status(500).json({ message: 'Failed to send OTP', error: error.message });
+  }
+});
+
+router.post('/verify-sigup', async (req, res) => {
+  try {
+    const { email, otp } = req.body;
+    const userData = users[email];
+    if (!userData || Date.now() > userData.otpExpires) return res.status(400).json({ message: 'Invalid or expired OTP' });
+    
+    const isMatch = await bcrypt.compare(otp, userData.otp);
+    if (!isMatch) return res.status(400).json({ message: 'Invalid OTP' });
+    
+    users[email].otp = null;
+
+    const user = await UserModel.findOne({ email });
+        res.status(200).json({ 
+          message: 'Password reset and Login successful', 
+          user 
+        });
+        
+  } catch (error) {
+    res.status(500).json({ message: 'Internal server error', error: error.message });
   }
 });
 

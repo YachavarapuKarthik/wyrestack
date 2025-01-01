@@ -57,7 +57,7 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup, onAuthSuccess }) 
 
   const handleResetPassword = async (e: FormEvent) => {
     e.preventDefault();
-    
+
     if (password !== confirmPassword) {
         setErrorMessage('Passwords do not match.');
         return;
@@ -84,6 +84,23 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup, onAuthSuccess }) 
             setErrorMessage('Failed to reset password or login. Please try again.');
         }
     }
+};
+const handleOtpChange = (e: ChangeEvent<HTMLInputElement>, index: number) => {
+  const value = e.target.value;
+
+  if (/[^0-9]/.test(value)) return; // Only allow digits
+
+  const otpArr = otp.split('');
+  otpArr[index] = value;
+  setOtp(otpArr.join(''));
+
+  // Auto-focus to the next input
+  if (value && index < 5) {
+    const nextInput = document.getElementById(`otp-input-${index + 1}`);
+    if (nextInput) {
+      (nextInput as HTMLInputElement).focus();
+    }
+  }
 };
 
   return (
@@ -143,12 +160,20 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup, onAuthSuccess }) 
           <form onSubmit={handleVerifyOtp}>
             <div className="form-group">
               <label>Enter OTP</label>
-              <input
-                type="text"
-                value={otp}
-                onChange={(e: ChangeEvent<HTMLInputElement>) => setOtp(e.target.value)}
-                required
-              />
+              <div className="otp-inputs">
+                {[...Array(6)].map((_, index) => (
+                  <input
+                    key={index}
+                    id={`otp-input-${index}`}
+                    type="text"
+                    value={otp[index] || ''}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => handleOtpChange(e, index)}
+                    maxLength={1}
+                    required
+                    className="otp-box"
+                  />
+                ))}
+              </div>
             </div>
             <button type="submit" className="submit-btn">Verify OTP</button>
             <button type="button" className="back-btn" onClick={() => setMode('sendOtp')}>Back</button>
