@@ -4,6 +4,7 @@ import LoginPopup from "../LoginPopup.tsx";
 import SignupPopup from "../SignupPopup.tsx";
 import userAvatar from "../../assets/user-avatar.png";
 import Cookies from "js-cookie";
+import { Link } from 'react-router-dom';
 
 function NavBar() {
   const [isLoginPopupVisible, setLoginPopupVisible] = useState(false);
@@ -47,7 +48,9 @@ function NavBar() {
       <div className="nav-container">
         <div className="navbar">
           <div className="navin">
+          <Link to="/" >
             <img className="logo" src={logo} alt="Logo" />
+          </Link>
             <div
               className={`hamburger ${isMenuOpen ? "open" : "close"}`}
               onClick={toggleMenu}
@@ -59,11 +62,11 @@ function NavBar() {
               </svg>
             </div>
             <div className={`links ${isMenuOpen ? "expanded" : ""}`}>
-              <a href="/" onClick={closeMenu}>Home</a>
-              <a href="#" onClick={closeMenu}>Services</a>
-              <a href="#" onClick={closeMenu}>Our Story</a>
-              <a href="/courses" onClick={closeMenu}>Courses</a>
-              <a href="#" onClick={closeMenu}>Contact</a>
+            <Link to="/" onClick={closeMenu}>Home</Link>
+            <Link to="#" onClick={closeMenu}>Services</Link>
+            <Link to="#" onClick={closeMenu}>Our Story</Link>
+            <Link to="/courses" onClick={closeMenu}>Courses</Link>
+            <Link to="#" onClick={closeMenu}>Contact</Link>
               {!isAuthenticated ? (
                 <button
                   onClick={() => { closeMenu(); showLoginPopup(); }}

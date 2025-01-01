@@ -21,7 +21,7 @@ function LandingPage(){
         <OurServices/>
         
         <Courses/>
-        <Testinomials/>
+        {/* <Testinomials/> */}
         <Contact/>
         
         <Footer/>

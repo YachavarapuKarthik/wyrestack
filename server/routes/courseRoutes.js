@@ -8,24 +8,74 @@ const router = express.Router();
  * @route POST /courses/add
  * @desc Add a New Course
  */
+
 router.post('/add', async (req, res) => {
   try {
-    const { logo, banner, title, mode, start_date, duration, trainer, price } = req.body;
-
-    const newCourse = new CourseModel({
+    const {
       logo,
-      banner,
+      courseLogoUrl,
       title,
+      courseTitle,
       mode,
+      courseMode,
       start_date,
+      courseStartDate,
+      registrationStartDate,
+      registrationEndDate,
       duration,
       trainer,
       price,
+      originalPrice,
+      discountedPrice,
+      coursePaymentCoupons,
+      courseBannerUrl,
+      description,
+      syllabusLink,
+      reviewsCount,
+      averageRating,
+      isFreeCourse,
+      instructors,
+      categories,
+      language,
+      materials,
+      demoLink,
+      democertificationLink,
+    } = req.body;
+
+    const newCourse = new CourseModel({
+      logo,
+      courseLogoUrl,
+      title,
+      courseTitle,
+      mode,
+      courseMode,
+      start_date,
+      courseStartDate,
+      registrationStartDate,
+      registrationEndDate,
+      duration,
+      trainer,
+      price,
+      originalPrice,
+      discountedPrice,
+      coursePaymentCoupons,
+      courseBannerUrl,
+      description,
+      syllabusLink,
+      reviewsCount,
+      averageRating,
+      isFreeCourse,
+      instructors,
+      categories,
+      language,
+      materials,
+      demoLink,
+      democertificationLink,
     });
 
     await newCourse.save();
 
-    // Include the auto-generated _id in the response
+    // Return the newly created course with _id and other details
     res.status(201).json({ 
       message: 'Course added successfully', 
       course: newCourse 
@@ -78,6 +128,7 @@ router.get('/:id', async (req, res) => {
     });
   }
 });
+
 /**
  * @route PUT /courses/edit/:id
  * @desc Edit an Existing Course by ID
