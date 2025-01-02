@@ -14,6 +14,7 @@ interface Course {
   price: number;
   start_date: string;
   duration: string;
+  description:string;
 }
 
 function CourseDashboard() {
@@ -53,8 +54,8 @@ function CourseDashboard() {
                         <div className="corsinfo">
                             <h2>{course.title}</h2>
                             <h4>{course.trainer}</h4>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa deserunt ipsam quos et in similique eaque sed illo ut, velit accusamus neque quaerat nemo quam eveniet ex voluptate quod consequuntur. Earum minima distinctio esse animi aliquam perferendis. Nostrum autem omnis quae pariatur porro magnam culpa quod sunt esse, enim illo vero laboriosam sint aliquam illum? Ipsum laboriosam maiores neque, earum porro quaerat in perspiciatis facilis dolorem quia, voluptas repudiandae officiis explicabo nesciunt labore! Odit non numquam, dolore delectus dolorem dicta, tenetur sed in voluptates blanditiis aut fugit quisquam quod a? Assumenda, sed odit distinctio provident harum voluptatibus autem veritatis doloremque!  Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident cupiditate recusandae deserunt accusamus. Minima odio quam perferendis suscipit at modi iure accusantium tempore velit, autem ullam pariatur illo, aperiam corrupti magni voluptate deserunt beatae! Voluptatem voluptas, doloribus, eligendi minus iure dolorem harum quidem ullam excepturi molestiae repudiandae officiis aperiam possimus?     Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum error ab amet deleniti distinctio similique laborum natus, quas vitae consequuntur sapiente nam earum libero sint tempore a nesciunt adipisci at quis id saepe odio aliquam excepturi? Neque nam blanditiis laboriosam reiciendis natus! Culpa quasi qui sapiente nisi sit nihil voluptate vel! Quis modi tenetur ea impedit excepturi ut, quo omnis odit quod inventore tempora eveniet illo, hic, fugiat itaque aperiam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum reiciendis maxime laboriosam, eum natus fuga est molestiae sit quidem facere impedit quod laudantium, nemo cupiditate suscipit quaerat dolor delectus optio perferendis, quo non. Tempora beatae, reiciendis eos modi et molestias voluptate recusandae eum veniam. Reprehenderit quo voluptate dolorem deserunt animi, deleniti odio, error alias, eligendi tenetur similique cumque. Necessitatibus a alias labore nemo iure ipsa similique vitae esse, earum illum, excepturi placeat molestias. Voluptate esse nisi nemo expedita aliquid et consequatur labore exercitationem tenetur illum. Repellat, aut. Assumenda eius ipsa, quibusdam praesentium blanditiis, voluptatibus vel ducimus incidunt tenetur error voluptates!</p>
-                        </div>
+                            <p>{course.description}</p>
+                          </div>
                     </div>
           <div className="dash-right">
             <div className="vidplay">
@@ -76,8 +77,6 @@ function CourseDashboard() {
               <span className="off">84% off</span>
               <br />
               <button className="enroll">Enroll now!</button>
-              <p className="payback">30-Day Money-Back Guarantee</p>
-              <p className="payback">Full Lifetime Access</p>
             </div>
           </div>
         </div>

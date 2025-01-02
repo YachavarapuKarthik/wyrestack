@@ -30,7 +30,7 @@ const LoginPopup: React.FC<Props> = ({ closePopup, openSignup, onAuthSuccess }) 
       setErrorMessage(error.response?.data?.message || 'An error occurred');
       setTimeout(() => {
         setErrorMessage('');
-      }, 5000);
+      }, 1000);
     }
   };
 

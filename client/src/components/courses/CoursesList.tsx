@@ -48,7 +48,7 @@ const CourseList: React.FC = () => {
         <div className="courses-container">
           {courses.map((course) => (
             <div key={course._id}>
-              <img src={course.logo} alt={course.title} className="course-logo" />
+              <img src={course.logo} style={{width:"100px",height:"auto"}} alt={course.title} className="course-logo" />
               <h2>{course.title}</h2>
               <p><strong>Trainer:</strong> {course.trainer}</p>
               <p><strong>Mode:</strong> {course.mode}</p>

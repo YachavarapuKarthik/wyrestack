@@ -1,6 +1,5 @@
 const express = require('express');
 const CourseModel = require('../models/Course');
-const ReviewModel = require('../models/Review');
 
 const router = express.Router();
 
@@ -8,74 +7,42 @@ const router = express.Router();
  * @route POST /courses/add
  * @desc Add a New Course
  */
-
 router.post('/add', async (req, res) => {
   try {
     const {
-      logo,
       courseLogoUrl,
       title,
-      courseTitle,
-      mode,
-      courseMode,
       start_date,
-      courseStartDate,
-      registrationStartDate,
-      registrationEndDate,
       duration,
       trainer,
       price,
-      originalPrice,
-      discountedPrice,
-      coursePaymentCoupons,
       courseBannerUrl,
+      syallabusLink,
       description,
-      syllabusLink,
-      reviewsCount,
-      averageRating,
       isFreeCourse,
-      instructors,
-      categories,
       language,
       materials,
       demoLink,
-      democertificationLink,
     } = req.body;
 
     const newCourse = new CourseModel({
-      logo,
       courseLogoUrl,
       title,
-      courseTitle,
-      mode,
-      courseMode,
       start_date,
-      courseStartDate,
-      registrationStartDate,
-      registrationEndDate,
       duration,
       trainer,
       price,
-      originalPrice,
-      discountedPrice,
-      coursePaymentCoupons,
       courseBannerUrl,
+      syallabusLink,
       description,
-      syllabusLink,
-      reviewsCount,
-      averageRating,
       isFreeCourse,
-      instructors,
-      categories,
       language,
       materials,
       demoLink,
-      democertificationLink,
     });
 
     await newCourse.save();
 
-    // Return the newly created course with _id and other details
     res.status(201).json({ 
       message: 'Course added successfully', 
       course: newCourse 
@@ -95,7 +62,7 @@ router.post('/add', async (req, res) => {
  */
 router.get('/', async (req, res) => {
   try {
-    const courses = await CourseModel.find().populate('reviews');
+    const courses = await CourseModel.find();
     res.status(200).json(courses);
   } catch (error) {
     console.error('Error fetching courses:', error);
@@ -113,7 +80,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const { id } = req.params;
-    const course = await CourseModel.findById(id).populate('reviews');
+    const course = await CourseModel.findById(id);
 
     if (!course) {
       return res.status(404).json({ message: 'Course not found' });

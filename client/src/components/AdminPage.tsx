@@ -4,47 +4,26 @@ import "../css/Admin.css";
 
 interface Course {
   _id?: string;
-  logo: string;
   courseLogoUrl?: string;
   title: string;
-  courseTitle?: string;
-  mode: string;
-  courseMode?: string;
   start_date?: string;
-  courseStartDate?: string;
-  registrationStartDate?: string;
-  registrationEndDate?: string;
   duration: string;
   trainer: string;
   price: number;
-  originalPrice?: number;
-  discountedPrice?: number;
-  coursePaymentCoupons?: {
-    code: string;
-    discountPercentage: number;
-    expiryDate: string;
-  }[];
   courseBannerUrl?: string;
-  description: string;
   syllabusLink?: string;
-  reviewsCount?: number;
-  averageRating?: number;
+  description: string;
   isFreeCourse?: boolean;
-  instructors?: { name: string }[];
-  categories?: string[];
   language: string;
   materials?: string[];
   demoLink?: string;
-  democertificationLink?: string;
 }
 
 const AdminPage: React.FC = () => {
   const [showCourseForm, setShowCourseForm] = useState(false);
   const [editCourseId, setEditCourseId] = useState<string | null>(null);
   const [course, setCourse] = useState<Course>({
-    logo: "",
     title: "",
-    mode: "",
     duration: "",
     trainer: "",
     price: 0,
@@ -54,16 +33,17 @@ const AdminPage: React.FC = () => {
   const [courses, setCourses] = useState<Course[]>([]);
 
   useEffect(() => {
-    const fetchCourses = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/courses");
-        setCourses(response.data);
-      } catch (error) {
-        console.error("Error fetching courses:", error);
-      }
-    };
-    fetchCourses();
+    refreshCourses();
   }, []);
+
+  const refreshCourses = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/courses");
+      setCourses(response.data);
+    } catch (error) {
+      console.error("Error fetching courses:", error);
+    }
+  };
 
   const handleCourseChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -72,30 +52,21 @@ const AdminPage: React.FC = () => {
     setCourse({ ...course, [name]: value });
   };
 
-  const addCourse = async () => {
+  const addOrUpdateCourse = async () => {
     try {
-        // Add new course if no editCourseId
+      if (editCourseId) {
+        await axios.put(`http://localhost:5000/courses/edit/${editCourseId}`, course);
+        alert("Course updated successfully!");
+      } else {
         await axios.post("http://localhost:5000/courses/add", course);
         alert("Course added successfully!");
-      
-      
-      // Close the form after adding/updating
+      }
       setShowCourseForm(false);
-      
-      // Refresh the course list
-      refreshCourses(); 
+      setEditCourseId(null);
+      refreshCourses();
     } catch (error) {
       console.error("Error saving course:", error);
       alert("An error occurred while saving the course.");
-    }
-  };
-
-  const refreshCourses = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/courses");
-      setCourses(response.data);
-    } catch (error) {
-      console.error("Error refreshing courses:", error);
     }
   };
 
@@ -121,23 +92,30 @@ const AdminPage: React.FC = () => {
 
       <div className="admin-page__courses-section">
         <h2 className="admin-page__subtitle">Manage Courses</h2>
+        
         <button
           className="btn btn--toggle-form"
-          onClick={() => setShowCourseForm(!showCourseForm)}
+          onClick={() => {
+            setShowCourseForm(!showCourseForm);
+            if (showCourseForm) {
+              setCourse({
+                title: "",
+                duration: "",
+                trainer: "",
+                price: 0,
+                description: "",
+                language: "",
+              });
+              setEditCourseId(null);
+            }
+          }}
         >
           {showCourseForm ? "Close Form" : "Add New Course"}
         </button>
 
+
         {showCourseForm && (
           <div className="course-form">
-            <input
-              className="course-form__input"
-              type="text"
-              name="logo"
-              placeholder="Logo URL"
-              value={course.logo}
-              onChange={handleCourseChange}
-            />
             <input
               className="course-form__input"
               type="text"
@@ -152,14 +130,6 @@ const AdminPage: React.FC = () => {
               name="title"
               placeholder="Course Title"
               value={course.title}
-              onChange={handleCourseChange}
-            />
-            <input
-              className="course-form__input"
-              type="text"
-              name="mode"
-              placeholder="Mode"
-              value={course.mode}
               onChange={handleCourseChange}
             />
             <input
@@ -194,22 +164,6 @@ const AdminPage: React.FC = () => {
               value={course.price}
               onChange={handleCourseChange}
             />
-            <input
-              className="course-form__input"
-              type="number"
-              name="originalPrice"
-              placeholder="Original Price"
-              value={course.originalPrice || ""}
-              onChange={handleCourseChange}
-            />
-            <input
-              className="course-form__input"
-              type="number"
-              name="discountedPrice"
-              placeholder="Discounted Price"
-              value={course.discountedPrice || ""}
-              onChange={handleCourseChange}
-            />
             <textarea
               className="course-form__textarea"
               name="description"
@@ -217,14 +171,6 @@ const AdminPage: React.FC = () => {
               value={course.description}
               onChange={handleCourseChange}
             ></textarea>
-            <input
-              className="course-form__input"
-              type="text"
-              name="syllabusLink"
-              placeholder="Syllabus Link"
-              value={course.syllabusLink || ""}
-              onChange={handleCourseChange}
-            />
             <input
               className="course-form__input"
               type="text"
@@ -251,16 +197,8 @@ const AdminPage: React.FC = () => {
               value={course.demoLink || ""}
               onChange={handleCourseChange}
             />
-            <input
-              className="course-form__input"
-              type="text"
-              name="democertificationLink"
-              placeholder="Demo Certification Link"
-              value={course.democertificationLink || ""}
-              onChange={handleCourseChange}
-            />
-            <button className="btn btn--submit" onClick={addCourse}>
-              {"Add Course"}
+            <button className="btn btn--submit" onClick={addOrUpdateCourse}>
+              {editCourseId ? "Update Course" : "Add Course"}
             </button>
           </div>
         )}
@@ -271,7 +209,7 @@ const AdminPage: React.FC = () => {
             <div key={course._id} className="course-item">
               <h4 className="course-item__title">{course.title}</h4>
               <p className="course-item__trainer">Trainer: {course.trainer}</p>
-              <p className="course-item__mode">Mode: {course.mode}</p>
+              <p className="course-item__duration">Duration: {course.duration}</p>
               <p className="course-item__price">Price: ₹{course.price}</p>
               <button
                 className="btn btn--edit"
