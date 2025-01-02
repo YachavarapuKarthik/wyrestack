@@ -57,6 +57,7 @@ const AdminPage: React.FC = () => {
       if (editCourseId) {
         await axios.put(`http://localhost:5000/courses/edit/${editCourseId}`, course);
         alert("Course updated successfully!");
+        
       } else {
         await axios.post("http://localhost:5000/courses/add", course);
         alert("Course added successfully!");
