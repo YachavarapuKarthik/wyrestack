@@ -7,12 +7,13 @@ import CoursesLanding from './components/courses/CoursesLanding.tsx';
 import CourseDashboard from './components/courses/CouseDashboard.tsx';
 import Payment from './components/Payment.tsx';
 import AdminPage from './components/AdminPage.tsx';
+import ContactLanding from './components/contact/ContactLanding.tsx';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true); 
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 800);
+    const timer = setTimeout(() => setIsLoading(false), 2500);
     return () => clearTimeout(timer); 
   }, []);
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
           <Route path="/courses" element={<CoursesLanding/>} /> 
           <Route path="/courses/:id" element={<CourseDashboard/>} />
           <Route path="/payment" element ={<Payment/>} />
+          <Route path="/contact" element ={<ContactLanding/>} />
          <Route path="/auth/private/admin/" element ={<AdminPage/>}/> 
         </Routes>
       )}

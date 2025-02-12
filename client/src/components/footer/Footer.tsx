@@ -1,42 +1,70 @@
-import CopyRight from "./CopyRight";
-import WhiteLogo from "../../assets/logo_dark.png"
-import QuickLinks from "./QuickLinks";
+import React from "react";
+import logo from "../../assets/logo_dark.png"
 
-function Footer(){
-    return (
-        <>
-        <footer className="footer">
-            <div className="footer-logo">
-                <img src= {WhiteLogo} />
-                <p>At Neuron.ai, we thrive on innovation and thinking outside the box. Reach out to us for a comprehensive analysis and evaluation of your ideas, and let's bring your vision to life.</p>
-                <QuickLinks/>
-            </div>
+function Footer() {
+  return (
+    <footer className="footer">
+    
 
-            <div className="footer-content">
-                <div className="services">
-                    <h3>Our Services</h3>
-                    <ul>
-                        <li>Web Design</li>
-                        <li>Web Development</li>
-                        <li>NeuroLearnHub</li>
-                        <li>NeuroTrainerConnect</li>
-                    </ul>
-                </div>
-            </div>
+      <div className="footer-container">
+        {/* Left Section */}
+        <div className="footer-left">
+          <img className = "footer-logo" src={logo}/>
+          <p className="footer-text">
+            A Modern Bank Card For A Modern World And Advanced And Up-To-Date
+            Services For Your Convenience
+          </p>
+        </div>
 
-            <div className="footer-address">
-                <div className="address">
-                    <h3>Connect with us at</h3>
-                    <ul>
-                        <li>Old town, Kavali</li>
-                        <li>Pincode-524201</li>
-                    </ul>
-                </div>
-            </div>
+        {/* Center Section */}
+        <div className="footer-center">
+          <div className="quick-access">
+            <h4>Quick Access</h4>
+            <ul>
+              <li>About Us</li>
+              <li>Services</li>
+              <li>Careers</li>
+              <li>Learn</li>
+              <li>Branches</li>
+              <li>FAQ</li>
+              <li>Blog</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Right Section */}
+        <div className="footer-right">
+          <p className="newsletter-text">
+            To Know The Latest News And Updates, Enter Your Email So That We Can
+            Contact You
+          </p>
+          <div className="newsletter">
+            <input
+              type="email"
+              placeholder="Enter Email Address"
+              className="newsletter-input"
+            />
+            <button className="newsletter-button">Subscribe</button>
+          </div>
+          <div className="social-icons">
+            <a href="#"><i className="fab fa-telegram"></i></a>
+            <a href="#"><i className="fab fa-twitter"></i></a>
+            <a href="#"><i className="fab fa-whatsapp"></i></a>
+            <a href="#"><i className="fab fa-instagram"></i></a>
+            <a href="#"><i className="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Block Design */}
+      <div className="footer-bottom-blocks"></div>
+
+      {/* Footer Bottom Text */}
+      <div className="footer-bottom">
+        <p>Copyright © 2023 Square Card. All Rights Reserved.</p>
+      </div>
     </footer>
-        <CopyRight/>
-        </>
-    );
+  );
 }
 
 export default Footer;

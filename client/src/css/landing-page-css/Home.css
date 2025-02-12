@@ -33,14 +33,34 @@
     background-color: var(--primary);
     filter: blur(100px);
     border-radius: 100px;
-    z-index: 0;
+    /* z-index: 0; */
     position: absolute;
-    animation: moveDiagonal 20s infinite ease-in-out; /* Continuous left-right movement */
+    animation: moveDiagonal 3s infinite; /* Continuous left-right movement */
   }
   
   @keyframes moveDiagonal {
-    0% { transform: translate(0%, 0%); }  /* Start at bottom-right */
-    50% { transform: translate(-10%, 10%); }  /* Move to top-left */  /* Return to bottom-right */
+    0% {
+      transform: translate(-50%, 0%);
+    }
+    50%{
+      transform: translate(-50%, 20%);
+    }
+    100%{
+      transform: translate(-50%, 0%);
+    }
+    /* 25% {
+      transform: translate(50%, -50%);
+    }
+    50% {
+      transform: translate(50%, 50%); 
+    }
+    75% {
+      transform: translate(-50%, 50%); 
+    }
+    100% {
+      transform: translate(-50%, 0%);
+    } */
+
   }
   
   

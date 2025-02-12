@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Manrope:700|Manrope:400');
+
+:root {
+  --text: hsl(0, 0%, 99%);
+  --textDim: hsl(0, 0%, 60%);
+  --background: hsl(0, 0%, 7%);
+  --primary: hsl(155, 100%, 65%);
+  --primaryBg: hsla(155, 100%, 65%, 1%);
+  --primaryHi: hsla(155, 100%, 75%, 25%);
+  --primaryFg: hsl(155, 100%, 85%);
+  --secondary: hsl(156, 51%, 14%);
+  --secondaryFg: hsl(156, 51%, 75%);
+  --secondaryBg: hsla(156, 51%, 14%, 5%);
+  --secondaryHi: hsla(156, 51%, 30%, 50%);
+  --accent: hsl(155, 100%, 94%);
+  --accentBg: hsla(155, 100%, 94%, 1%);
+  --accentHi: hsla(155, 100%, 100%, 25%);
+}
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Manrope';
+    box-sizing: border-box; 
+   
+  } 
+  @keyframes fadeSlideInLeft {
+    from {
+      opacity: 0;
+      transform: translateY(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeSlideInRight {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      
+      transform: translateX(0);
+      opacity: 1;
+    }
+  
+  }
+  
+  /* Course Container */
+  .course-container {
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 65px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* Course Info */
+  .course-info {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Left Section with Animation */
+  .course-left {
+    height: 100%;
+    width: 50%;
+    animation: fadeSlideInLeft 1s ease-in-out; /* Apply animation */
+  }
+  
+  .course-left h2 {
+    color: var(--primary);
+    font-size: 3.7rem;
+    line-height: 70px;
+    margin-bottom: 25px;
+    margin-top: 150px;
+  }
+  
+  .course-left p {
+    color: var(--accent);
+    font-size: 1.3rem;
+    margin-right: 20px;
+  }
+  
+  /* Right Section with Animation */
+  .contact-right {
+    height: 100%;
+    width: 50%;
+    background-image: url("../../assets/contact-support.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: fadeSlideInRight 1s ease-in-out; /* Apply animation */
+  }
+  
+  /* Responsive for tablets (1024px and smaller) */
+  @media (max-width: 1024px) {
+    .course-container {
+      height: auto; /* Adjust height for tablets */
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .course-info {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+  
+    .course-left {
+      width: 75%;
+      height: auto;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    .course-left h2 {
+      font-size: 2.5rem;
+      margin-top: 50px;
+      line-height: 50px;
+    }
+  
+    .course-left p {
+      font-size: 1.1rem;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  
+    .contact-right {
+      width: 80%;
+      height: auto;
+      min-height: 450px;
+      margin-bottom: 20px;
+      background-size: contain;
+    }
+  }
+  
+  /* Responsive for phones (480px and smaller) */
+  @media (max-width: 480px) {
+    .course-container {
+      height: auto;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .course-left {
+      width: 95%;
+      height: auto;
+    }
+  
+    .course-left h2 {
+      font-size: 2rem;
+      line-height: 45px;
+      margin-top: 30px;
+    }
+  
+    .course-left p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0 10px;
+    }
+  
+    .contact-right {
+      height: 200px;
+      width: 95%;
+      background-size: contain;
+    }
+  }
+

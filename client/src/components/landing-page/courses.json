@@ -1,32 +1,102 @@
-[
+[ 
   {
-    "title": "Python for Beginners",
-    "trainer": "Karthik Yachavarapu",
+    "title": "Full-Stack Web Development",
+    "trainer": "Arjun Patel",
     "price": {
-      "discounted": "₹549",
-      "original": "₹999"
+      "discounted": "₹999",
+      "original": "₹1999"
     },
     "mode": "ONLINE",
-    "image": "/../assets/images/python.png"
-  },  
-  {
-    "title": "JavaScript Advanced Concepts",
-    "trainer": "Kowsik Vardhan",
-    "price": {
-      "discounted": "₹799",
-      "original": "₹1299"
-    },
-    "mode": "ONLINE",
-    "image": "javascript-course.jpg"
+    "image": "/images/python.png"
   },
   {
-    "title": "React Basics for Beginners",
-    "trainer": "Bhargav Reddy",
+    "title": "Mastering Data Structures & Algorithms",
+    "trainer": "Nidhi Sharma",
+    "price": {
+      "discounted": "₹899",
+      "original": "₹1599"
+    },
+    "mode": "ONLINE",
+    "image": "dsa-course.jpg"
+  },
+  {
+    "title": "Machine Learning with Python",
+    "trainer": "Rohit Verma",
+    "price": {
+      "discounted": "₹1299",
+      "original": "₹2499"
+    },
+    "mode": "ONLINE",
+    "image": "ml-python-course.jpg"
+  },
+  {
+    "title": "Cybersecurity Fundamentals",
+    "trainer": "Ananya Raj",
+    "price": {
+      "discounted": "₹699",
+      "original": "₹1399"
+    },
+    "mode": "ONLINE",
+    "image": "cybersecurity-course.jpg"
+  },
+  {
+    "title": "Android App Development with Kotlin",
+    "trainer": "Vikram Desai",
+    "price": {
+      "discounted": "₹999",
+      "original": "₹1999"
+    },
+    "mode": "ONLINE",
+    "image": "android-kotlin-course.jpg"
+  },
+  {
+    "title": "Backend Development with Node.js",
+    "trainer": "Sandeep Kumar",
+    "price": {
+      "discounted": "₹849",
+      "original": "₹1599"
+    },
+    "mode": "ONLINE",
+    "image": "nodejs-course.jpg"
+  },
+  {
+    "title": "DevOps Essentials with AWS",
+    "trainer": "Neha Gupta",
+    "price": {
+      "discounted": "₹1299",
+      "original": "₹2499"
+    },
+    "mode": "ONLINE",
+    "image": "devops-aws-course.jpg"
+  },
+  {
+    "title": "Blockchain Development with Ethereum",
+    "trainer": "Rahul Tiwari",
+    "price": {
+      "discounted": "₹1499",
+      "original": "₹2999"
+    },
+    "mode": "ONLINE",
+    "image": "blockchain-ethereum-course.jpg"
+  },
+  {
+    "title": "UI/UX Design Masterclass",
+    "trainer": "Pooja Mehta",
     "price": {
       "discounted": "₹799",
       "original": "₹1499"
     },
     "mode": "ONLINE",
-    "image": "react-course.jpg"
+    "image": "uiux-course.jpg"
+  },
+  {
+    "title": "Cloud Computing with Azure",
+    "trainer": "Kiran Malhotra",
+    "price": {
+      "discounted": "₹1199",
+      "original": "₹2299"
+    },
+    "mode": "ONLINE",
+    "image": "azure-cloud-course.jpg"
   }
 ]

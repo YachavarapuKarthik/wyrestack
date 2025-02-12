@@ -22,7 +22,7 @@ app.use(cors());
 
 // MongoDB Connection
 mongoose
-  .connect('mongodb://localhost:27017/wyst', {
+  .connect('mongodb://localhost:27017/wyrestack', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -34,8 +34,8 @@ app.use('/auth', authRoutes);
 app.use('/courses', courseRoutes);
 // app.use('/forgot-password', forgotPasswordRoutes);
 app.use('/contact',contactRoute)
-app.use('/payment',paymentRoute)
-app.use('/online-compiler',compilerRoute)
+// app.use('/payment',paymentRoute)
+// app.use('/online-compiler',compilerRoute)
 
 // app.use('/reviews', reviewRoutes);
 

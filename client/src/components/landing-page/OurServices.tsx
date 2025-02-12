@@ -4,11 +4,11 @@ function OurServices() {
             <div className="Oinfo">
                 <div className="Omatter">
                     <h2>OUR SERVICES</h2>
-                    <p>Wyrestack Technologies is a premier e-teaching platform dedicated to skill development. We offer a range of high-quality
-                        online courses designed to equip learners with practical knowledge and expertise in emerging technologies. Our mission is
-                        to empower individuals to achieve their career goals by providing accessible, engaging, and industry-relevant training.
-                        Whether you’re looking to upskill, reskill, or explore new opportunities, Wyrestack Technologies provides the tools and
-                        resources needed to succeed in a competitive digital world. </p>
+                    <p>Wyrestack Technologies is a startup focused on skill development and digital solutions.
+                         We offer online courses in emerging technologies and provide professional web development services.
+                          Our mission is to empower individuals and businesses with the right tools 
+                          to succeed in the digital world.
+                         </p>
                 </div>
                 <div className="Ocourses">
                     <div className="cor1 cor">
@@ -21,11 +21,11 @@ function OurServices() {
                         <div className="darrow">&#8595;</div>
 
                     </div>
-                    <div className="cor3 cor">
+                    {/* <div className="cor3 cor">
                         <p>Resume Building</p>
                         <div className="darrow">&#8595;</div>
 
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

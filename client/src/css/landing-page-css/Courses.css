@@ -1,72 +1,70 @@
 /*///////////////////////////////////////////////// courses starts ///////////////////////////////////////// */
 .courses-section {
-    background-color:hsl(0,0%,7%);
-    color: #f4f4f4;
-    padding: 50px 20px;
-    text-align: center;
-  }
-  
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color:hsl(155,100%,65%);
-  }
-  
-  /* Wrapper for cards and navigation buttons */
-  .courses-wrapper {
-    position: relative;
-  }
-  
-  .courses-container {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding: 20px;
-    scrollbar-width: none; /* For Firefox */
-  }
-  
-  .courses-container::-webkit-scrollbar {
-    display: none; /* For Chrome, Safari, and Edge */
-  }
-  
-  .course-card {
-    flex: 0 0 calc(33.33% - 20px); /* 3 cards per row with spacing */
-    background: hsl(155,100%,65%,1%);
-    padding: 20px;
-    border-radius: 10px;
-    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); */
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    color:#fff;
-    border: 1px solid grey;
-  /* margin: 20px; */
+  background-color:hsl(0,0%,7%);
+  color: #f4f4f4;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  color:hsl(155,100%,65%);
+}
+
+/* Wrapper for cards and navigation buttons */
+.courses-wrapper {
+  position: relative;
+}
+
+.courses-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+  scrollbar-width: none; /* For Firefox */
+}
+
+.courses-container::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+
+.course-card {
+  flex: 0 0 calc(33.33% - 20px); /* 3 cards per row with spacing */
+  background: hsl(155,100%,65%,1%);
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  color:#fff;
+  border: 1px solid grey;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    
-  }
-  
-  .course-card:hover {
-    transform: translateY(-10px);
-    background-color: hsl(155,100%,94%,1%);
-  }
-  
-  .course-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: hsl(0,0%,60%);
-  }
-  
-  .course-card p {
-    font-size: 1rem;
-    line-height: 1.5;
-    color:hsl(156,100%,85%);
-  }
-  
-  .icon-container {
-    margin-top: 20px;
-    font-size: 3rem;
-    color: #00ff7f;
-  }
-  .mode,
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+  background-color: hsl(155,100%,94%,1%);
+}
+
+.course-card h3 {
+  font-size: 1.5rem; /* Responsive heading */
+  margin-bottom: 15px;
+  color: hsl(0,0%,60%);
+}
+
+.course-card p {
+  font-size: 1.5rem; /* Responsive text */
+  line-height: 1.5;
+  color:hsl(156,100%,85%);
+}
+
+.icon-container {
+  margin-top: 20px;
+  font-size: 3rem;
+  color: #00ff7f;
+}
+
+.mode,
 .trainer {
   font-size: 1rem;
   color: #555;
@@ -74,7 +72,7 @@
 }
 
 .price {
-  font-size: 1.25rem;
+  font-size: 1rem; /* Responsive pricing */
   font-weight: bold;
   margin-top: 15px;
   color: #333;
@@ -82,7 +80,7 @@
 
 .discounted {
   color: #e74c3c;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .original {
@@ -95,7 +93,7 @@
   background-color: hsl(156,100%,85%);
   color: #000;
   padding: 12px 20px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -110,31 +108,32 @@
 .enroll-btn:focus {
   outline: none;
 }
-  
-  /* Navigation Buttons */
-  .nav-btn-container {
-    position: absolute;
-    top: -30px;
-    right: 10px;
-    display: flex;
-    gap: 10px;
-  }
-  
-  .nav-btn {
-    background: hsl(0,0%,60%);
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    color: #1a1a1a;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .nav-btn:hover {
-    background-color: hsl(155,100%,85%);
-  }
-  /* Add this for the slide-up animation */
+
+/* Navigation Buttons */
+.nav-btn-container {
+  position: absolute;
+  top: -30px;
+  right: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.nav-btn {
+  background: hsl(0,0%,60%);
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #1a1a1a;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.nav-btn:hover {
+  background-color: hsl(155,100%,85%);
+}
+
+/* Add this for the slide-up animation */
 .course-card {
   opacity: 0; /* Hidden initially */
   transform: translateY(20px); /* Start slightly below */
@@ -156,27 +155,37 @@
   border-radius: 10px;
 }
 
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .course-card {
+    flex: 0 0 calc(50% - 20px); /* 2 cards per row for tablets */
+  }
+  .course-card h3 {
+    font-size: 3rem;
+  }
+  .course-card p, .price, .discounted {
+    font-size: 1rem;
+  }
+}
 
-  
-  /* Responsive Design */
-  @media screen and (max-width: 1024px) {
-    .course-card {
-      flex: 0 0 calc(50% - 20px); /* 2 cards per row for tablets */
-    }
+@media screen and (max-width: 768px) {
+  .nav-btn-container {
+    display: none; /* Hide navigation buttons */
   }
-  
-  @media screen and (max-width: 768px) {
-    .nav-btn-container {
-      display: none; /* Hide navigation buttons */
-    }
-  
-    .courses-container {
-      flex-direction: column; /* Stack cards vertically */
-    }
-  
-    .course-card {
-      flex: 0 0 auto; /* Auto size for vertical stacking */
-      margin: 10px 0;
-    }
+
+  .courses-container {
+    flex-direction: column; /* Stack cards vertically */
   }
-  /* //////////////////////////////////////////courses ends //////////////////////////////////////*/
+
+  .course-card {
+    flex: 0 0 auto; /* Auto size for vertical stacking */
+    margin: 10px 0;
+  }
+  .course-card h3 {
+    font-size: 3rem;
+  }
+  .course-card p, .price, .discounted {
+    font-size: 1rem;
+  }
+}
+/* //////////////////////////////////////////courses ends //////////////////////////////////////*/

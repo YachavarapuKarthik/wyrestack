@@ -64,9 +64,8 @@ function NavBar() {
             <div className={`links ${isMenuOpen ? "expanded" : ""}`}>
             <Link to="/" onClick={closeMenu}>Home</Link>
             <Link to="#" onClick={closeMenu}>Services</Link>
-            <Link to="#" onClick={closeMenu}>Our Story</Link>
             <Link to="/courses" onClick={closeMenu}>Courses</Link>
-            <Link to="#" onClick={closeMenu}>Contact</Link>
+            <Link to="/contact" onClick={closeMenu}>Contact</Link>
               {!isAuthenticated ? (
                 <button
                   onClick={() => { closeMenu(); showLoginPopup(); }}

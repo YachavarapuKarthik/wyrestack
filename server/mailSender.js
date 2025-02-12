@@ -14,7 +14,8 @@ const transporter = nodemailer.createTransport({
 });
 
 // const to = "mounikapalaparthi12@gmail.com";
-const to = "pkowsik2004@gmail.com"
+// const to = "pkowsik2004@gmail.com"
+const to = 'nareshpattapu9347@gmail.com'
 const subject = "Mail from Karthikkkkkk";
 const message = "Reply Hi if you receive this email";
 

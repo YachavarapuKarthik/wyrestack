@@ -1,20 +1,38 @@
+:root {
+  --text: hsl(0, 0%, 99%);
+  --textDim: hsl(0, 0%, 60%);
+  --background: hsl(0, 0%, 7%);
+  --primary: hsl(155, 100%, 65%);
+  --primaryBg: hsla(155, 100%, 65%, 1%);
+  --primaryHi: hsla(155, 100%, 75%, 25%);
+  --primaryFg: hsl(155, 100%, 85%);
+  --secondary: hsl(156, 51%, 14%);
+  --secondaryFg: hsl(156, 51%, 75%);
+  --secondaryBg: hsla(156, 51%, 14%, 5%);
+  --secondaryHi: hsla(156, 51%, 30%, 50%);
+  --accent: hsl(155, 100%, 94%);
+  --accentBg: hsla(155, 100%, 94%, 1%);
+  --accentHi: hsla(155, 100%, 100%, 25%);
+}
+
 
 /* Contact Section Styling */
+.conhead{
+  color: var(--primary);
+}
 .contact-section {
- 
-    padding: 50px 20px;
+    /* margin-top: -250px; */
+    padding : 0 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 120vh; /* Full-screen height */
+    height: auto; /* Full-screen height */
     gap: 30px; /* Space between h1 and form */
     position: relative;
     overflow: hidden; /* Ensure animation is within bounds */
   }
-  .contact-section h1{
-    color:#fff;
-  }
+  
   .contact-form {
     width: 100%;
     max-width: 800px;
@@ -50,14 +68,15 @@
   select {
     cursor: pointer;
   }
+
   .wavy-text {
-    font-size: 5rem;
+    font-size: 9rem;
     font-weight: bold;
     color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    
     bottom: 0;
     width: 100%;
     text-transform: uppercase;
@@ -290,3 +309,7 @@
       justify-content: center;
     }
   }
+
+
+
+  
