@@ -63,7 +63,7 @@ function NavBar() {
             </div>
             <div className={`links ${isMenuOpen ? "expanded" : ""}`}>
             <Link to="/" onClick={closeMenu}>Home</Link>
-            <Link to="#" onClick={closeMenu}>Services</Link>
+            <Link to="/services" onClick={closeMenu}>Services</Link>
             <Link to="/courses" onClick={closeMenu}>Courses</Link>
             <Link to="/contact" onClick={closeMenu}>Contact</Link>
               {!isAuthenticated ? (

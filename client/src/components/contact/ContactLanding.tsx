@@ -1,4 +1,5 @@
 import NavBar from "../header/NavBar";
+import Footer from "../footer/Footer";
 import Contact from "./Contact";
 import ContactHome from "./ContactHome";
 
@@ -9,6 +10,7 @@ function ContactLanding(){
         <NavBar/>
         <ContactHome/>
         <Contact/>
+        <Footer/>
         </>
         
     );

@@ -8,6 +8,7 @@ import CourseDashboard from './components/courses/CouseDashboard.tsx';
 import Payment from './components/Payment.tsx';
 import AdminPage from './components/AdminPage.tsx';
 import ContactLanding from './components/contact/ContactLanding.tsx';
+import ServicesLandingPage from './components/services/ServicesLandingPage.tsx';
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true); 
@@ -28,6 +29,7 @@ const App: React.FC = () => {
           <Route path="/courses/:id" element={<CourseDashboard/>} />
           <Route path="/payment" element ={<Payment/>} />
           <Route path="/contact" element ={<ContactLanding/>} />
+          <Route path="/services" element={<ServicesLandingPage/>}/>
          <Route path="/auth/private/admin/" element ={<AdminPage/>}/> 
         </Routes>
       )}
