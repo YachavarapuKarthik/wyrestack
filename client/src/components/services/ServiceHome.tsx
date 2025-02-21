@@ -9,7 +9,8 @@ function ServiceHome() {
           
           <div className="glow"></div>
   
-  
+          
+
           <div className="title">
             <div className="title-container">
               <p>No more wait, Its time to</p>

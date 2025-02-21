@@ -10,7 +10,6 @@ function CoursesLanding(){
         <NavBar/>
         <CourseHome/>
         <CourseList/>
-        <Contact/>
         <Footer/>
         </>
         

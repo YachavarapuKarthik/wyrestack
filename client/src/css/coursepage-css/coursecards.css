@@ -1,4 +1,5 @@
 .Ccourse-container {
+    width:85%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
@@ -6,7 +7,10 @@
     max-width: 1200px;
     margin: auto;
 }
-  
+.Ccourse-info{
+    width: 90%;
+    height: 100%;
+}
 .Ccourse-card {
 
     width: 80%;
@@ -18,14 +22,21 @@
     text-align: center;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     overflow: hidden;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
+    border: 4px solid transparent;
+    background: linear-gradient(hsl(210, 24%, 8%), hsl(210, 24%, 8%)) padding-box, 
+                linear-gradient(135deg, hsl(210, 85%, 70%) 0%, 
+                hsl(210, 24%, 8%), 
+                hsl(210, 24%, 8%), 
+                hsl(238, 70%, 55%) 100%) border-box;
+    border-radius: 1.25rem;
+
+    backdrop-filter: blur(50px);
     cursor: pointer;
 }
 
 .Ccourse-image {
     width: auto; /* Ensures image fills the card */
-    height: 180px; /* Uniform height */
+    height: 90px; /* Uniform height */
     object-fit: cover; /* Prevents stretching */
     border-radius: 8px;
 }
@@ -35,14 +46,26 @@
     font-weight: bold;
 }
 
+.h2 {
+    font-size: 1.2rem;
+    color: white;
+    font-weight: bold;
+}
 .Ccourse-card p {
     font-size: 0.9rem;
     opacity: 0.8;
 }
 
-.Ccourse-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.2);
+.Cbutton{
+    background-color: aliceblue;
+    color: black;
+    font-size: 1rem;
+}
+.Cbutton:hover{
+    background-color: aliceblue;
+    color: black;
+    font-size: 1.1rem;
+    transition:0.5s;
 }
 
 /* Tablets (max-width: 1024px) */
@@ -55,7 +78,7 @@
     }
 
     .Ccourse-card {
-        width: 85%; /* Cards at 85% width */
+        width: 60%; /* Cards at 85% width */
         padding: 15px;
     }
 
@@ -82,7 +105,7 @@
     }
     
     .Ccourse-card {
-        width: 85%; /* Cards at 85% width */
+        width: 60%; /* Cards at 85% width */
         padding: 12px;
     }
 
@@ -109,7 +132,7 @@
     }
 
     .Ccourse-card {
-        width: 85%; /* Cards at 85% width */
+        width: 60%; /* Cards at 85% width */
         padding: 10px;
     }
 

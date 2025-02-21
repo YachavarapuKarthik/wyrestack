@@ -120,27 +120,50 @@ import React from "react";
 import "../../css/coursepage-css/coursecards.css"
 
 const courses = [
-  { title: "Design Multiple Apps with Figma and AI", videos: "Early Access", hours: "", color: "#3D2C8D" },
-  { title: "AI Design with Ideogram", videos: "5 videos", hours: "1 hour", color: "#7D00FF" },
-  { title: "Design and Code UI with Galileo", videos: "27 videos", hours: "4 hours", color: "#141414" },
-  { title: "Build SwiftUI apps for iOS 18", videos: "17 videos", hours: "5 hours", color: "#7200CA" },
-  { title: "Build a React Native app with Claude AI", videos: "5 videos", hours: "12 hours", color: "#240046" },
-  { title: "Create your Dream Apps with Cursor", videos: "18 videos", hours: "5 hours", color: "#5B08A3" },
-  { title: "Build a SwiftUI app with Claude AI", videos: "35 videos", hours: "9 hours", color: "#9A1AA0" },
-  { title: "Design and Prototype for iOS 18", videos: "", hours: "60 mph", color: "#5E0177" },
-  // Add more courses here...
+  { 
+    title: "Introduction to Programming", 
+    image: "/imgs/java.png",  
+    startDate: "May 15, 2025"
+  } ,
+{ 
+      title: "Mastering Data Structures", 
+    image: "/imgs/data-structures.png",  // Correct path
+    startDate: "March 10, 2025"
+  },
+  { 
+    title: "Algorithms Beginner to Pro", 
+    image: "/imgs/algorithms.png",  
+    startDate: "April 5, 2025"
+  }
+  
 ];
 
 const CourseList = () => {
   return (
+    <>
+    <div className="Ocontainer">
+        <div className="Oinfo">
+            <div className="Omatter">
+              <br></br>
+              <br></br>
+              <h2>Upcoming Courses</h2>
+            </div>
+          </div>
+        </div>
     <div className="Ccourse-container">
+      
       {courses.map((course, index) => (
-        <div key={index} className="Ccourse-card" style={{ backgroundColor: course.color }}>
+        <div key={index} className="Ccourse-card" >
+           <img src={course.image} alt={course.title} className="Ccourse-image" />
           <h3>{course.title}</h3>
-          <p>{course.videos} {course.hours && ` - ${course.hours}`}</p>
+          <p className="start-date">Start Date: {course.startDate}</p>
+          <br></br>
+          <button className="Cbutton">Join now</button>
         </div>
       ))}
     </div>
+    </>
+    
   );
 };
 

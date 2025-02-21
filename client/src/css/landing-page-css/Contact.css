@@ -112,6 +112,12 @@
       font-size: 3rem;
     }
   }
+
+  @media (max-width: 1048px) {
+    .wavy-text {
+      font-size: 6rem;
+    }
+  }
   
   /* Button Styling */
   .submit-btn {

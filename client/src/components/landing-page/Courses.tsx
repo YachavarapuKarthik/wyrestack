@@ -186,79 +186,50 @@ import React from "react";
 import "../../css/coursepage-css/coursecards.css";
 
 const courses = [
-    { 
-        title: "Design Multiple Apps with Figma and AI", 
-        image: "/imgs/figma.png",  // Correct path
-        startDate: "March 10, 2025", 
-        color: "#3D2C8D" 
-      },
       { 
-        title: "AI Design with Ideogram", 
-        image: "/imgs/python.png",  
-        startDate: "April 5, 2025", 
-        color: "#7D00FF" 
-      },
-      { 
-        title: "Design and Code UI with Galileo", 
+        title: "Introduction to Programming", 
         image: "/imgs/java.png",  
-        startDate: "May 15, 2025", 
-        color: "#141414" 
-      }  
-    // { 
-    //   title: "Full-Stack Web Development with React", 
-    //   image: "https://via.placeholder.com/150", 
-    //   startDate: "June 1, 2025", 
-    //   color: "#FF5733" 
-    // },
-    // { 
-    //   title: "Python for Data Science", 
-    //   image: "https://via.placeholder.com/150", 
-    //   startDate: "July 10, 2025", 
-    //   color: "#005F73" 
-    // },
-    // { 
-    //   title: "Machine Learning with TensorFlow", 
-    //   image: "https://via.placeholder.com/150", 
-    //   startDate: "August 20, 2025", 
-    //   color: "#9B2226" 
-    // },
-    // { 
-    //   title: "Cybersecurity Essentials", 
-    //   image: "https://via.placeholder.com/150", 
-    //   startDate: "September 5, 2025", 
-    //   color: "#7B2CBF" 
-    // },
-    // { 
-    //   title: "Blockchain and Web3 Development", 
-    //   image: "https://via.placeholder.com/150", 
-    //   startDate: "October 15, 2025", 
-    //   color: "#D90429" 
-    // },
-    // { 
-    //   title: "Cloud Computing with AWS", 
-    //   image: "https://via.placeholder.com/150", 
-    //   startDate: "November 25, 2025", 
-    //   color: "#023E8A" 
-    // },
-    // { 
-    //   title: "UX/UI Design Fundamentals", 
-    //   image: "https://via.placeholder.com/150", 
-    //   startDate: "December 10, 2025", 
-    //   color: "#FFC300" 
-    // }
+        startDate: "May 15, 2025"
+      } ,
+    { 
+          title: "Mastering Data Structures", 
+        image: "/imgs/data-structures.png",  // Correct path
+        startDate: "March 10, 2025"
+      },
+      { 
+        title: "Algorithms Beginner to Pro", 
+        image: "/imgs/algorithms.png",  
+        startDate: "April 5, 2025"
+      }
+      
   ];
   
 const CourseList = () => {
   return (
+    <>
+    <div className="Ocontainer">
+        <div className="Oinfo">
+            <div className="Omatter">
+              <br></br>
+              <br></br>
+              <h2>Upcoming Courses</h2>
+            </div>
+          </div>
+        </div>
     <div className="Ccourse-container">
+      
       {courses.map((course, index) => (
-        <div key={index} className="Ccourse-card" style={{ backgroundColor: course.color }}>
-          <img src={course.image} alt={course.title} className="Ccourse-image" />
+        <div key={index} className="Ccourse-card" >
+           <img src={course.image} alt={course.title} className="Ccourse-image" />
           <h3>{course.title}</h3>
           <p className="start-date">Start Date: {course.startDate}</p>
+          <br></br>
+          <button className="Cbutton">Join now</button>
         </div>
       ))}
     </div>
+    </>
+    
   );
 };
 

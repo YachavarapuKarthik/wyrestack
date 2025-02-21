@@ -14,7 +14,14 @@ const courses = [
   function ServicesList() {
     return (
       <>
-         <div className="ag-format-container">
+      <div className="Ocontainer">
+        <div className="Oinfo">
+            <div className="Omatter">
+              <h2>Services Offered</h2>
+            </div>
+          </div>
+        </div>
+      <div className="ag-format-container">
         <div className="ag-courses_box">
           {courses.map((course, index) => (
             <div key={index} className="ag-courses_item">
