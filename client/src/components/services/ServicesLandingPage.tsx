@@ -12,7 +12,6 @@ function ServicesLandingPage(){
         <NavBar/>
         <ServiceHome/>
         <ServicesList/>
-        <Contact/>
         <Footer/>
         </>
 

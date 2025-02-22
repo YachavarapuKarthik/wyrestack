@@ -235,7 +235,6 @@ html{
   justify-content: center; /* Centers all items */
   align-items: center;
   text-align: center;
-  gap: 50px; /* Adds spacing between sections */
 }
 
 .footer-logo{

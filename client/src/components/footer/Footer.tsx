@@ -11,8 +11,7 @@ function Footer() {
         <div className="footer-left">
           <img className = "footer-logo" src={logo}/>
           <p className="footer-text">
-            A Modern Bank Card For A Modern World And Advanced And Up-To-Date
-            Services For Your Convenience
+            Wyrestack Technolgies completely focused on Quality Software services, Quality Skill with top notch service
           </p>
         </div>
 
@@ -21,13 +20,14 @@ function Footer() {
           <div className="quick-access">
             <h4>Quick Access</h4>
             <ul>
-              <li>About Us</li>
+              {/* <li>About Us</li> */}
               <li>Services</li>
-              <li>Careers</li>
+              {/* <li>Careers</li> */}
               <li>Learn</li>
-              <li>Branches</li>
+              <li>Contact</li>
+              {/* <li>Branches</li>
               <li>FAQ</li>
-              <li>Blog</li>
+              <li>Blog</li> */}
             </ul>
           </div>
         </div>
@@ -57,13 +57,15 @@ function Footer() {
       </div>
 
       {/* Bottom Block Design */}
-      <div className="footer-bottom-blocks"></div>
 
       {/* Footer Bottom Text */}
       <div className="footer-bottom">
-        <p>Copyright © 2023 Square Card. All Rights Reserved.</p>
+        <p>Copyright © 2025 Team Wyrestack  . All Rights Reserved.</p>
       </div>
+      
     </footer>
+    
+    
   );
 }
 

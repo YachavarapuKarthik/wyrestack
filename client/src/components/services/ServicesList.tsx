@@ -1,15 +1,12 @@
 import "../../css/services/services.css";
 
-const courses = [
-    { title: "UI/Web & Graph design for teenagers 11-17 years old", startDate: "04.11.2022" },
-    { title: "UX/UI Web-Design + Mobile Design", startDate: "04.11.2022" },
-    { title: "Annual package 'Product+UX/UI+Graph designer 2022'", startDate: "04.11.2022" },
-    { title: "Graphic Design", startDate: "04.11.2022" },
-    { title: "Motion Design", startDate: "30.11.2022" },
-    { title: "Front-end development + jQuery + CMS" },
-    { title: "Digital Marketing" },
-    { title: "Interior Design", startDate: "31.10.2022" }
-  ];
+const services = [
+  { title: "Website Development", description: "Building responsive and SEO-friendly websites tailored to business needs." },
+  { title: "App Development", description: "Creating mobile and web applications for various platforms with modern technologies." },
+  { title: "Online Business Development", description: "Helping businesses establish a strong online presence and digital strategy." },
+  { title: "Software Services", description: "Providing custom software solutions for automation, management, and productivity." },
+  { title: "Product Support and Maintenance", description: "Ensuring the smooth operation, updates, and security of existing products." }
+];
   
   function ServicesList() {
     return (
@@ -23,14 +20,14 @@ const courses = [
         </div>
       <div className="ag-format-container">
         <div className="ag-courses_box">
-          {courses.map((course, index) => (
+          {services.map((service, index) => (
             <div key={index} className="ag-courses_item">
               <a href="#" className="ag-courses-item_link">
                 <div className="ag-courses-item_bg"></div>
-                <div className="ag-courses-item_title">{course.title}</div>
-                {course.startDate && (
+                <div className="ag-courses-item_title">{service.title}</div>
+                {service.description && (
                   <div className="ag-courses-item_date-box">
-                    Start: <span className="ag-courses-item_date">{course.startDate}</span>
+                    Start: <span className="ag-courses-item_date">{service.description}</span>
                   </div>
                 )}
               </a>

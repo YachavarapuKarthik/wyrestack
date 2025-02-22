@@ -99,6 +99,10 @@
 
 /* Tablet (max-width: 979px) - 2 items per row */
 @media only screen and (max-width: 979px) {
+  .ag-courses-item_bg {
+    width: 20vw;
+    height: 20vw;
+  }
   .ag-courses_item {
     flex: 1 1 calc(50% - 2rem);
   }
@@ -110,6 +114,10 @@
 
 /* Mobile (max-width: 639px) - 1 item per row */
 @media only screen and (max-width: 639px) {
+  .ag-courses-item_bg {
+    width: 20vw;
+    height: 20vw;
+  }
   .ag-format-container {
     width: 90%;
   }
